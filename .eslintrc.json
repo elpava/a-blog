@@ -17,5 +17,5 @@
     "sourceType": "module"
   },
   "plugins": ["react"],
-  "rules": {"react/prop-types": [0]}
+  "rules": { "react/prop-types": [0], "no-console": [1] }
 }

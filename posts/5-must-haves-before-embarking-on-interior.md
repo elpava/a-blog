@@ -1,15 +1,13 @@
 ---
 title: '5 Must-haves before embarking on interior'
-data: '4/26/2022'
+date: '04-26-2022'
 image: 'company-stairs.jpg'
+excerpt: 'Start from the largest elements and work your way through from there.'
 category: 'interior'
 isFeatured: false
+mostViewed: true
 tags: ['interior', 'architecture']
 ---
-
-![company stairs](/public/5-must-haves-before-embarking-on-interior/company-stairs.jpg)
-
-# 5 Must-haves before embarking on interior
 
 Creating a smashing interior takes more than just wit and instinct, you’ll need to follow certain rules to satisfy both the aesthetic and functionality of a space.
 
@@ -43,7 +41,7 @@ When you are able to determine your light sources with their qualities and inten
 
 5. **_Know the 60-30-10 Rule_**
 
-   Colour is a powerful element in the design, as it can affect the look and feel of your interior. To create colour harmony among your elements, use the 60-30-10 rule. It is where 60% should be the dominant colour, 30% will be your secondary colour, and lastly, the 10% goes to your accent colours.
+Colour is a powerful element in the design, as it can affect the look and feel of your interior. To create colour harmony among your elements, use the 60-30-10 rule. It is where 60% should be the dominant colour, 30% will be your secondary colour, and lastly, the 10% goes to your accent colours.
 
 6. **_Harmonize with the Existing Architecture_**
 
@@ -56,7 +54,7 @@ When you have a great room with high ceilings, for instance, you can add a large
 Designing your own space based on your own preference is as important to any rule or guidelines out there. Whether you love a vintage vibe or prefer the coral blue shades, it is imperative that you are comfortable, contented, happy, and feel safe in your personal space.
 
 ![office interior with table and chairs near window
-](/public/5-must-haves-before-embarking-on-interior/office-interior-with-table.jpg)
+](/5-must-haves-before-embarking-on-interior/office-interior-with-table.jpg)
 
 ### _Takeaway:_
 

@@ -1,15 +1,13 @@
 ---
-title: 'Are you embarrassed by your car skills? Here's what to do'
-data: '7/7/2022'
+title: 'Are you embarrassed by your car skills? Here is what to do'
+date: '07-07-2022'
 image: 'a-yellow-porsche-911-gt3.jpg'
+excerpt: 'Basic Driving Knowledge That You Should Know.'
 category: 'life style'
 isFeatured: false
+mostViewed: false
 tags: ['life style', 'car']
 ---
-
-![a yellow porshce](/public/are-you-embarrassed-by-your-car-skills/a-yellow-porsche-911-gt3.jpg)
-
-# Are you embarrassed by your car skills? Here's what to do
 
 No matter when you get your license, you’ll be happy to have it! **Driving is a life skill**, in many people’s opinion.
 
@@ -24,7 +22,7 @@ Here are some other **ways that driving could be considered a life skill**:
 
 With all those perks in mind, perhaps you’ll feel inspired to take the wheel for the first time! And when you’re ready to buy a car of your own, be sure to get great **[car insurance](https://getjerry.com/car-insurance)**. Thanks to Jerry, the process is easier than ever.
 
-![a blue porshce](/public/are-you-embarrassed-by-your-car-skills/a-blue-porsche-911-gt3.jpg)
+![a blue porshce](/are-you-embarrassed-by-your-car-skills/a-blue-porsche-911-gt3.jpg)
 
 Jerry scans quotes from **more than 50** top insurance companies and delivers the best deals straight to you. The average user **saves $887** per year.
 

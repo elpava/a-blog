@@ -1,21 +1,19 @@
 ---
 title: 'The next 7 things to immediately do about car'
-data: '5/23/2022'
+date: '05-23-2022'
 image: 'a-blue-audi-car.jpg'
+excerpt: '1. Walk Around the Car. 2. Adjust your Seat. 3. Adjust Your Mirrors...'
 category: 'life style'
 isFeatured: true
+mostViewed: true
 tags: ['life style', 'car', 'tips']
 ---
-
-![a blue audi car](/public/the-next-7-things-to-immediately-do-about-car/a-blue-audi-car.jpg)
-
-# The next 7 things to immediately do about car
 
 Driver’s Ed teaches students how to drive, but there are plenty of other important lessons that still need to be taught. Here are 7 helpful things to discuss with a new driver:
 
 1. What to do if you get a flat tire?
 
-Pull completely off the road, even if it means destroying the tire. Call roadside assistance and let that person change the tire. If you have a spare and know how to change the tire, make sure you are out of traffic and in plain sight of oncoming traffic before changing it yourself. If you are in need of a new tire, we’ve got you covered! Visit [tiers in wiygul.com](http://wiygul.com/tires/) to shop for tires by vehicle, size and brand.
+   Pull completely off the road, even if it means destroying the tire. Call roadside assistance and let that person change the tire. If you have a spare and know how to change the tire, make sure you are out of traffic and in plain sight of oncoming traffic before changing it yourself. If you are in need of a new tire, we’ve got you covered! Visit [tiers in wiygul.com](http://wiygul.com/tires/) to shop for tires by vehicle, size and brand.
 
 2. What to do when the "Check Engine" light comes on?
 
@@ -39,11 +37,11 @@ Pull completely off the road, even if it means destroying the tire. Call roadsid
 
    As an inexperienced driver, you may drive more slowly, more cautiously, or make a mistake. If you inadvertently anger another driver, don't get drawn into interacting with them. Ignore them or, if necessary, change your route. If someone offends you, take a deep breath and know that your anger will dissolve in minutes.
 
-7. How to keep your vehicle running smoothly>
+7. How to keep your vehicle running smoothly?
 
    Follow your vehicle’s maintenance recommendations stated in your owner's manual - this includes things like oil changes and tire rotations. Also, keep in mind, if you own a vehicle in Virginia you will be to a Virginia State Inspection every year and a Virginia Emissions Inspection every two years.
 
-![a yellow audi car](/public/the-next-7-things-to-immediately-do-about-car/a-yellow-audi-car.jpg)
+![a yellow audi car](/the-next-7-things-to-immediately-do-about-car/a-yellow-audi-car.jpg)
 
 We understand that as a new driver, there’s a lot to keep in mind. Start good driving habits now by following these tips:
 
