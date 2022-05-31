@@ -1,0 +1,10 @@
+@mixin categoryLabel {
+  font-size: 0.8rem;
+  font-family: inherit;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #222;
+  background-color: #eee;
+  border-radius: 5px;
+  padding: 4px 10px;
+}
