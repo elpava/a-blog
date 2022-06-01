@@ -1,4 +1,4 @@
-@mixin categoryLabel {
+@mixin category-label {
   font-size: 0.8rem;
   font-family: inherit;
   text-transform: uppercase;
@@ -7,4 +7,14 @@
   background-color: #eee;
   border-radius: 5px;
   padding: 4px 10px;
+}
+
+@mixin vertical-divider {
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+  padding-bottom: 3rem;
+}
+
+@mixin divider-gray-line {
+  border-bottom: 1px solid #e4e4e4;
 }
