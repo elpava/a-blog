@@ -1,7 +1,9 @@
 import Head from 'next/head';
+import GridPosts from '../components/grid-posts/grid-posts';
 
 import FeaturePostsCards from '../components/posts/feature-post-cards';
 import PostCards from '../components/posts/post-cards';
+import Subscribe from '../components/subscribe';
 
 import { getFeaturedPosts, getAllPosts } from '../lib/posts-utils';
 
@@ -16,6 +18,8 @@ function HomePage(props) {
       <main>
         <FeaturePostsCards posts={featuredPosts} />
         <PostCards posts={allPosts} />
+        <Subscribe />
+        <GridPosts posts={allPosts} />
       </main>
     </>
   );

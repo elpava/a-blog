@@ -20,11 +20,9 @@ function FeaturePostCard({ postData }) {
         <Image src={postImage} alt={title} layout="fill" objectFit="cover" />
         <Link href={postSlug}>
           <a>
-            <div className={styles.postcard_info}>
-              <div className={styles.postcard_info_header}>
-                <span className={styles.postcard_info_category}>
-                  {category}
-                </span>
+            <div className={styles.info}>
+              <div className={styles.header}>
+                <span className={styles.category}>{category}</span>
                 <time>{postDate}</time>
               </div>
               <h1 className="text-light">{title}</h1>

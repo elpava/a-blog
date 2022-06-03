@@ -1,0 +1,6 @@
+.container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  @include m.horizontal-divider;
+  @include m.horizontal-divider-line;
+}

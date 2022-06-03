@@ -1,0 +1,30 @@
+.grid {
+  width: 100%;
+  @include m.vertical-divider;
+  @include m.vertical-divider-line;
+
+  .post {
+    width: 100%;
+    border: 1px dotted #eee;
+    margin-bottom: 5rem;
+
+    .image {
+      @include m.image-wrapper(450px);
+
+      img {
+        border-radius: v.$card-radius;
+      }
+    }
+  }
+
+  .link {
+    display: inline-block;
+    width: 100%;
+    height: 4rem;
+    line-height: 4rem;
+    border-radius: v.$card-radius;
+    text-align: center;
+    color: #eee;
+    background-color: #111;
+  }
+}

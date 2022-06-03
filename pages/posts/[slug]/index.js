@@ -8,7 +8,7 @@ import { getPostData, getPostsFiles } from '../../../lib/posts-utils';
 function Post(props) {
   const { post } = props;
   const {
-    category,
+    // category,
     content,
     date,
     image,

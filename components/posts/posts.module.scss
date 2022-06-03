@@ -2,31 +2,27 @@
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
-  @include m.vertical-divider;
-  @include m.divider-gray-line;
+  @include m.horizontal-divider;
+  @include m.horizontal-divider-line;
 
   .postcard {
-    position: relative;
+    @include m.image-wrapper(680px);
     flex: 1 1 500px;
-    height: 680px;
     border-radius: v.$card-radius;
     overflow: hidden;
 
-    &_info {
-      position: absolute;
-      left: 50px;
-      right: 50px;
-      top: 85%;
-      transform: translateY(-50%);
+    .info {
+      position: relative;
+      padding: 88% 2.5rem 0;
 
-      &_header {
+      .header {
         display: flex;
         align-items: center;
         column-gap: 12px;
         margin-bottom: 10px;
       }
 
-      &_category {
+      .category {
         @include m.category-label;
       }
 
@@ -44,30 +40,46 @@
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
-  @include m.vertical-divider;
-  @include m.divider-gray-line;
+  @include m.horizontal-divider;
+  @include m.horizontal-divider-line;
+}
 
-  .postcard {
-    flex: 1 1 350px;
+.postcard {
+  flex: 1 1 350px;
 
-    &_image {
-      position: relative;
-      width: 100%;
-      height: 240px;
-      border-radius: v.$card-radius;
-      margin-bottom: 1rem;
-      overflow: hidden;
+  .image {
+    @include m.image-wrapper(240px);
+    border-radius: v.$card-radius;
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }
+
+  .image_lg {
+    @include m.image-wrapper(450px);
+    border-radius: v.$card-radius;
+    overflow: hidden;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
+    margin-bottom: 10px;
+
+    .category {
+      @include m.category-label;
     }
+  }
 
-    &_header {
-      display: flex;
-      align-items: center;
-      column-gap: 12px;
-      margin-bottom: 10px;
+  .excerpt {
+    font-size: 1.2rem;
+  }
 
-      &_category {
-        @include m.category-label;
-      }
-    }
+  .title_lg {
+    font-size: 2.5rem;
+  }
+
+  .grid_mb {
+    margin-bottom: 1.5rem;
   }
 }
