@@ -3,13 +3,17 @@ import Sidebar from './sidebar/sidebar';
 
 import styles from './grid-posts.module.scss';
 
-function GridPosts({ posts }) {
+function GridPosts({ posts, featurePosts, tags }) {
   const categories = posts.map(post => post.category);
 
   return (
     <section className={styles.container}>
       <PostsBlock posts={posts} />
-      <Sidebar categories={categories} />
+      <Sidebar
+        categories={categories}
+        featurePosts={featurePosts}
+        tags={tags}
+      />
     </section>
   );
 }

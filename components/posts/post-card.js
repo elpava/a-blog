@@ -1,13 +1,14 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import CategoryLable from '../ui/CategoryLabel';
 
 import styles from './posts.module.scss';
 
 function PostCard({ postData, grid }) {
-  const { category, date, excerpt, image, slug, title } = postData;
+  const { category, categorySlug, date, excerpt, image, slug, title } =
+    postData;
 
   const postSlug = `/posts/${slug}`;
-  const postCategorySlug = `/category/${category}`;
   const postImage = `${process.env.NEXT_PUBLIC_POST_IMAGE_FOLDER}/${slug}/${image}`;
   const postDate = new Date(date).toLocaleString('en-us', {
     day: '2-digit',
@@ -34,11 +35,7 @@ function PostCard({ postData, grid }) {
         <Image src={postImage} alt={title} layout="fill" objectFit="cover" />
       </div>
       <div className={styles.header}>
-        <Link href={postCategorySlug}>
-          <a>
-            <span className={styles.category}>{category}</span>
-          </a>
-        </Link>
+        <CategoryLable data={{ text: category, slug: categorySlug }} />
         <time>{postDate}</time>
       </div>
       <Link href={postSlug}>

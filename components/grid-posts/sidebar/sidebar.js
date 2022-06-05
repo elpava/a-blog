@@ -4,13 +4,13 @@ import ByTags from './tags';
 
 import styles from './sidebar.module.scss';
 
-function Sidebar({ categories }) {
+function Sidebar({ categories, featurePosts, tags }) {
   return (
     <aside className={styles.sidebar}>
       <div className={styles.sticky}>
-        <ByCategory categories={categories} />
-        <ByFeature />
-        <ByTags />
+        <ByCategory categoriesData={categories} />
+        <ByFeature featurePostsData={featurePosts} />
+        <ByTags tagsData={tags} />
       </div>
     </aside>
   );

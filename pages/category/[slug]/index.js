@@ -4,12 +4,13 @@ import Link from 'next/link';
 
 import {
   getPostsByCategory,
-  getMostViewedPosts,
+  getAllPostsCategoryName,
 } from '../../../lib/posts-utils';
 import { capitalizeWords } from '../../../lib/utils';
 
 function Category(props) {
   const { posts, slug } = props;
+
   if (!posts) {
     return <h3>Loading</h3>;
   }
@@ -20,7 +21,7 @@ function Category(props) {
     const { date, excerpt, image, slug, title } = post;
 
     const postSlug = `/posts/${slug}`;
-    const postImage = `/${slug}/${image}`;
+    const postImage = `${process.env.NEXT_PUBLIC_POST_IMAGE_FOLDER}/${slug}/${image}`;
     const formattedDate = new Date(date).toLocaleString('en-us', {
       day: '2-digit',
       month: 'short',
@@ -62,13 +63,15 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
-  const mostViewedPosts = getMostViewedPosts();
+  const allPostsCategoryName = getAllPostsCategoryName();
 
-  const slugs = mostViewedPosts.map(post => post.slug.replace(/\.md$/, ''));
+  const slugs = allPostsCategoryName.map(category => ({
+    params: { slug: category.replace(' ', '-') },
+  }));
 
   return {
-    paths: slugs.map(slug => ({ params: { slug } })),
-    fallback: true,
+    paths: slugs,
+    fallback: false,
   };
 }
 

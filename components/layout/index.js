@@ -1,3 +1,4 @@
+import Footer from './footer/footer';
 import Header from './header/header';
 
 function Layout({ children }) {
@@ -5,6 +6,7 @@ function Layout({ children }) {
     <>
       <Header />
       {children}
+      <Footer />
     </>
   );
 }

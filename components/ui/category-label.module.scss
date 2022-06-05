@@ -1,0 +1,7 @@
+.label {
+  @include m.category-label;
+}
+
+.light {
+  background-color: #fff;
+}

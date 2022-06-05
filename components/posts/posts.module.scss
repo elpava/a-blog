@@ -22,10 +22,6 @@
         margin-bottom: 10px;
       }
 
-      .category {
-        @include m.category-label;
-      }
-
       time {
         font-size: 0.9rem;
         font-weight: 500;
@@ -65,10 +61,6 @@
     align-items: center;
     column-gap: 12px;
     margin-bottom: 10px;
-
-    .category {
-      @include m.category-label;
-    }
   }
 
   .excerpt {

@@ -14,7 +14,7 @@ function Categories(props) {
       const { date, excerpt, image, slug, title } = post;
 
       const postSlug = `/posts/${slug}`;
-      const postImage = `/${slug}/${image}`;
+      const postImage = `${process.env.NEXT_PUBLIC_POST_IMAGE_FOLDER}/${slug}/${image}`;
       const formattedDate = new Date(date).toLocaleString('en-us', {
         day: '2-digit',
         month: 'short',
@@ -46,7 +46,7 @@ function Categories(props) {
 
   const postsCategory = groupedPosts.map(item => {
     const { category, slug } = item;
-    const categorySlug = `/categories/${slug}`;
+    const categorySlug = `/category/${slug}`;
 
     return (
       <>

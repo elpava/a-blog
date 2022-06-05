@@ -13,7 +13,7 @@ function PostsBlock({ posts }) {
     <section className={styles.grid}>
       {gridPosts}
       <Link href="/">
-        <a className={styles.link}>See all posts</a>
+        <a className={styles.link}>See All Posts</a>
       </Link>
     </section>
   );

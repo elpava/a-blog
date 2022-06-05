@@ -1,10 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import CategoryLable from '../ui/CategoryLabel';
 
 import styles from './posts.module.scss';
 
 function FeaturePostCard({ postData }) {
-  const { date, category, image, slug, title } = postData;
+  const { category, categorySlug, date, image, slug, title } = postData;
 
   const postSlug = `/posts/${slug}`;
   const postImage = `${process.env.NEXT_PUBLIC_POST_IMAGE_FOLDER}/${slug}/${image}`;
@@ -22,7 +23,11 @@ function FeaturePostCard({ postData }) {
           <a>
             <div className={styles.info}>
               <div className={styles.header}>
-                <span className={styles.category}>{category}</span>
+                <CategoryLable
+                  data={{ text: category, slug: categorySlug }}
+                  light
+                  withoutLink
+                />
                 <time>{postDate}</time>
               </div>
               <h1 className="text-light">{title}</h1>

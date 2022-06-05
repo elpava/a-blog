@@ -2,14 +2,17 @@ import Link from 'next/link';
 
 import styles from './sidebar.module.scss';
 
-function ByCategory({ categories }) {
-  const uniqueCategories = [...new Set(categories)];
+function ByCategory({ categoriesData, temp }) {
+  const uniqueCategories = [...new Set(categoriesData)];
 
-  const categoriesList = uniqueCategories.map(item => (
-    <li key={item}>
-      <Link href={`/category/${item}`}>{item}</Link>
-    </li>
-  ));
+  const categoriesList = uniqueCategories.map(item => {
+    const tempSlug = item.replace(' ', '-');
+    return (
+      <li key={item}>
+        <Link href={`/category/${tempSlug}`}>{item}</Link>
+      </li>
+    );
+  });
 
   return (
     <div className={`${styles.category} mb_5`}>

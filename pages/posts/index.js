@@ -7,17 +7,16 @@ import { getAllPosts } from '../../lib/posts-utils';
 function posts(props) {
   const { posts } = props;
 
-  const allPosts = posts.map(post => {
-    const { date, excerpt, image, slug, title } = post;
+  const AllPosts = props => {
+    const { posts } = props;
 
-    const postSlug = `/posts/${slug}`;
-    const postImage = `/${slug}/${image}`;
+    return posts.map(post => {
+      const { date, excerpt, image, slug, title } = post;
 
-    return (
-      <>
-        <Head>
-          <title>Blog&apos;s Posts</title>
-        </Head>
+      const postSlug = `/posts/${slug}`;
+      const postImage = `${process.env.NEXT_PUBLIC_POST_IMAGE_FOLDER}/${slug}/${image}`;
+
+      return (
         <section
           style={{
             border: '1px solid gray',
@@ -39,11 +38,18 @@ function posts(props) {
           <time>{date}</time>
           <Link href={postSlug}>continue...</Link>
         </section>
-      </>
-    );
-  });
+      );
+    });
+  };
 
-  return <>{allPosts}</>;
+  return (
+    <>
+      <Head>
+        <title>Blog&apos;s Posts</title>
+      </Head>
+      <AllPosts posts={posts} />
+    </>
+  );
 }
 
 export async function getStaticProps() {
