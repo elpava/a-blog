@@ -1,7 +1,5 @@
 import Link from 'next/link';
 
-import styles from './footer.module.scss';
-
 function ItemsList({ items = [] }) {
   const lists = items.map(item => {
     const itemName = Object.keys(item).join();
@@ -13,11 +11,7 @@ function ItemsList({ items = [] }) {
     );
   });
 
-  return (
-    <div className={styles.wrapper}>
-      <ul>{lists}</ul>
-    </div>
-  );
+  return <ul>{lists}</ul>;
 }
 
 export default ItemsList;

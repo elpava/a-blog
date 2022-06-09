@@ -15,7 +15,10 @@ function Logo() {
             height={80}
           />
           <h3>
-            Blog <em>for more knowledge</em>
+            BLOG{' '}
+            <em>
+              <span>for more knowledge</span>
+            </em>
           </h3>
         </a>
       </Link>

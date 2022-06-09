@@ -2,6 +2,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Slabo+27px&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Delius+Swash+Caps&display=swap');
+
 h1,
 h2,
 h3,
@@ -25,6 +27,7 @@ main {
   width: v.$main-width;
   margin-left: auto;
   margin-right: auto;
+  padding-top: 149px;
   @include m.horizontal-divider;
   @include m.horizontal-divider-line;
 }

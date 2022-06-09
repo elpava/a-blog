@@ -1,7 +1,8 @@
 import Logo from './logo';
 
-import styles from './footer.module.scss';
 import ItemsList from './items-list';
+
+import styles from './footer.module.scss';
 
 function Footer() {
   return (
