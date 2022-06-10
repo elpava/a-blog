@@ -24,11 +24,19 @@ function Header() {
 
   const onLoadHeaderHandler = e => setHeaderHeight(e.target.offsetHeight);
 
+  const onMouseEnterDropdown = () => window.innerWidth > 900 && setToggle(true);
+  const onMouseLeaveDropdown = () =>
+    window.innerWidth > 900 && setToggle(false);
+
   return (
     <header className={styles.header} ref={headerTagRef}>
       <div className={styles.container} onLoad={onLoadHeaderHandler}>
         <nav className={styles.nav} ref={navTagRef}>
-          <Menu onToggle={toggleMenuHandler} />
+          <Menu
+            onToggle={toggleMenuHandler}
+            onMouseEnter={onMouseEnterDropdown}
+            onMouseLeave={onMouseLeaveDropdown}
+          />
           <Logo parentHeight={headerHeight} />
           <Search />
         </nav>
