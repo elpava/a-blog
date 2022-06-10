@@ -1,14 +1,7 @@
-import Footer from './footer/footer';
-import Header from './header/header';
+import Main from './main';
 
 function Layout({ children }) {
-  return (
-    <>
-      <Header />
-      {children}
-      <Footer />
-    </>
-  );
+  return <Main>{children}</Main>;
 }
 
 export default Layout;

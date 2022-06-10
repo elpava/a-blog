@@ -9,9 +9,7 @@ function FeaturePostsCards({ posts }) {
 
   return (
     <>
-      <section className={styles.feature_posts_container}>
-        {featuredPosts}
-      </section>
+      <section className={styles.feature_container}>{featuredPosts}</section>
     </>
   );
 }

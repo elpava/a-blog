@@ -15,16 +15,11 @@ function HomePage(props) {
       <Head>
         <title>Blog&apos;s Posts</title>
       </Head>
-      <main>
-        <FeaturePostsCards posts={featuredPosts} />
-        <PostCards posts={allPosts} />
-        <Subscribe />
-        <GridPosts
-          posts={allPosts}
-          featurePosts={featuredPosts}
-          tags={allTags}
-        />
-      </main>
+
+      <FeaturePostsCards posts={featuredPosts} />
+      <PostCards posts={allPosts} />
+      <Subscribe />
+      <GridPosts posts={allPosts} featurePosts={featuredPosts} tags={allTags} />
     </>
   );
 }

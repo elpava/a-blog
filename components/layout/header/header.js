@@ -24,19 +24,15 @@ function Header() {
 
   const onLoadHeaderHandler = e => setHeaderHeight(e.target.offsetHeight);
 
-  const onMouseEnterDropdown = () => window.innerWidth > 900 && setToggle(true);
-  const onMouseLeaveDropdown = () =>
-    window.innerWidth > 900 && setToggle(false);
+  // immediately hidden if we want going to click on menu items
+  // const onMouseEnterDropdown = () => window.innerWidth > 900 && setToggle(true);
+  // const onMouseLeaveDropdown = () => window.innerWidth > 900 && setToggle(false);
 
   return (
     <header className={styles.header} ref={headerTagRef}>
       <div className={styles.container} onLoad={onLoadHeaderHandler}>
         <nav className={styles.nav} ref={navTagRef}>
-          <Menu
-            onToggle={toggleMenuHandler}
-            onMouseEnter={onMouseEnterDropdown}
-            onMouseLeave={onMouseLeaveDropdown}
-          />
+          <Menu onToggle={toggleMenuHandler} />
           <Logo parentHeight={headerHeight} />
           <Search />
         </nav>

@@ -7,7 +7,7 @@ function PostCards({ posts }) {
     <PostCard postData={post} key={post.slug} />
   ));
 
-  return <section className={styles.posts_container}>{postCards}</section>;
+  return <section className={styles.items_container}>{postCards}</section>;
 }
 
 export default PostCards;

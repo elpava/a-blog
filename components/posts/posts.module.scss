@@ -1,4 +1,4 @@
-.feature_posts_container {
+.feature_container {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
@@ -32,12 +32,15 @@
   }
 }
 
-.posts_container {
+.items_container {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
-  @include m.horizontal-divider;
-  @include m.horizontal-divider-line;
+
+  &:not(:last-child) {
+    @include m.horizontal-divider;
+    @include m.horizontal-divider-line;
+  }
 }
 
 .postcard {
