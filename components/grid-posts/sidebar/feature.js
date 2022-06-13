@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import CategoryLable from '../../ui/CategoryLabel';
 
-import styles from './sidebar.module.scss';
+import styles from './feature.module.scss';
 
 function ByFeature({ featurePostsData }) {
   const featurePosts = featurePostsData.map(post => {

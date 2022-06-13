@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
-import styles from './sidebar.module.scss';
+import styles from './category.module.scss';
 
-function ByCategory({ categoriesData, temp }) {
+function ByCategory({ categoriesData }) {
   const uniqueCategories = [...new Set(categoriesData)];
 
   const categoriesList = uniqueCategories.map(item => {

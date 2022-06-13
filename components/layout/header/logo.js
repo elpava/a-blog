@@ -1,16 +1,19 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import useScrollPosition from '../../../hooks/useScrollPosition';
 
 import styles from './header.module.scss';
 
 function Logo({ parentHeight }) {
+  const { asPath: path } = useRouter();
   const postition = useScrollPosition();
+  const isHomepage = path === '/';
 
   const classes =
-    postition > parentHeight
-      ? `${styles.default} ${styles.small}`
+    isHomepage && postition < parentHeight
+      ? `${styles.default} ${styles.large}`
       : `${styles.default}`;
 
   return (

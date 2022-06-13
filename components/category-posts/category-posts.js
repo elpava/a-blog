@@ -1,27 +1,38 @@
-import Link from 'next/link';
-
-import PostCards from '../posts/post-cards';
+import Grid from '../grid-posts/grid';
+import PostsBlock from '../grid-posts/posts-block/posts-block';
+import Sidebar from '../grid-posts/sidebar/sidebar';
+import StickyMenu from '../layout/sticky-menu';
+import ByCategory from '../grid-posts/sidebar/category';
+import ByTags from '../grid-posts/sidebar/tags';
 
 import styles from './category-posts.module.scss';
+import PostCards from './post-cards';
 
-function CategoryPosts({ groupedPosts }) {
-  const postsCategory = groupedPosts.map(item => {
-    const { category, slug, posts } = item;
-    const categorySlug = `/category/${slug}`;
+function CategoryPosts({ category, categories, posts, tags }) {
+  if (!posts) {
+    return <h3>Loading</h3>;
+  }
 
-    return (
-      <section className={styles.container} key={category}>
-        <Link href={categorySlug}>
-          <a className={styles.link}>
-            <h1>{category}</h1>
-          </a>
-        </Link>
-        <PostCards posts={posts} />
-      </section>
-    );
-  });
+  return (
+    <section className={styles.container}>
+      <div className={styles.title}>
+        <h1>{category}</h1>
+      </div>
 
-  return <>{postsCategory}</>;
+      <Grid>
+        <PostsBlock>
+          <PostCards posts={posts} />
+        </PostsBlock>
+
+        <Sidebar>
+          <StickyMenu>
+            <ByCategory categoriesData={categories} />
+            <ByTags tagsData={tags} />
+          </StickyMenu>
+        </Sidebar>
+      </Grid>
+    </section>
+  );
 }
 
 export default CategoryPosts;

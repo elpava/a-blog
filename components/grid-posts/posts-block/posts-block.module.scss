@@ -1,21 +1,7 @@
-.grid {
+.container {
   width: 100%;
   @include m.vertical-divider;
   @include m.vertical-divider-line;
-
-  .post {
-    width: 100%;
-    border: 1px dotted #eee;
-    margin-bottom: 5rem;
-
-    .image {
-      @include m.image-wrapper(450px);
-
-      img {
-        border-radius: v.$card-radius;
-      }
-    }
-  }
 
   .link {
     display: inline-block;
@@ -31,6 +17,7 @@
     border-radius: v.$card-radius;
     padding: 1rem 0;
     transition: color 0.25s, background-color 0.25s;
+
     &:hover {
       color: #111;
       background-color: transparent;

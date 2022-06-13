@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import styles from './sidebar.module.scss';
+
+import styles from './tags.module.scss';
 
 function ByTags({ tagsData }) {
   const uniqueTags = [...new Set(tagsData.flat(1))];

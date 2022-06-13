@@ -1,14 +1,13 @@
 .container {
-  &:not(:last-child) {
+  .title {
+    text-align: center;
     @include m.horizontal-divider;
     @include m.horizontal-divider-line;
+    padding: 4.5rem 0;
   }
 
-  .link {
-    display: block;
-    text-transform: uppercase;
-    border-left: 5px solid #fd690d;
-    padding-left: 1rem;
-    margin-bottom: 1rem;
+  h1 {
+    font-size: 3.5rem;
+    font-weight: 600;
   }
 }

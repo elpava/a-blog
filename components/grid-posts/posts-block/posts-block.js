@@ -1,17 +1,11 @@
 import Link from 'next/link';
 
-import PostCard from '../../posts/post-card';
-
 import styles from './posts-block.module.scss';
 
-function PostsBlock({ posts }) {
-  const gridPosts = posts
-    .slice(-3)
-    .map(post => <PostCard key={post.slug} postData={post} grid />);
-
+function PostsBlock({ children }) {
   return (
-    <section className={styles.grid}>
-      {gridPosts}
+    <section className={styles.container}>
+      {children}
       <Link href="/">
         <a className={styles.link}>See All Posts</a>
       </Link>
