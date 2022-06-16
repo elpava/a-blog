@@ -1,0 +1,34 @@
+.block {
+  justify-self: center;
+
+  .text {
+    font-size: 2.5rem;
+    font-family: 'Delius Swash Caps', cursive;
+  }
+
+  .default {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: inherit;
+
+    span {
+      span {
+        img {
+          height: 50px !important;
+          transition: height 0.5s;
+        }
+      }
+    }
+  }
+
+  .large {
+    span {
+      span {
+        img {
+          height: 100px !important;
+        }
+      }
+    }
+  }
+}

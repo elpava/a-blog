@@ -1,17 +1,17 @@
 import { FaSearch } from 'react-icons/fa';
 
-import styles from './header.module.scss';
+import styles from './search.module.scss';
 
 function Search() {
   return (
-    <form className={styles.search}>
+    <form className={styles.field}>
       <input
         type="text"
         id="search"
         placeholder="SEARCH"
-        className={styles.input_field}
+        className={styles.input}
       />
-      <button className={styles.submit_button}>
+      <button className={styles.submit}>
         <FaSearch />
       </button>
     </form>

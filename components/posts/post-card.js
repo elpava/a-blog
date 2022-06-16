@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import CategoryLable from '../ui/CategoryLabel';
+import CategoryLable from '../ui/category-label';
 
-import styles from './posts.module.scss';
+import styles from './post-card.module.scss';
 
 function PostCard({ postData, grid }) {
   const { category, categorySlug, date, excerpt, image, slug, title } =
@@ -17,20 +17,20 @@ function PostCard({ postData, grid }) {
   });
 
   const customStyle = {
-    postcard: styles.postcard,
+    block: styles.block,
     excerpt: styles.excerpt,
     image: styles.image,
     title: null,
   };
 
   if (grid) {
-    customStyle.postcard = `${styles.postcard} mb_5`;
+    customStyle.block = `${styles.block} mb_5`;
     customStyle.image = `${styles.image_lg} mb_1_half`;
     customStyle.title = `${styles.title_lg} mb_1`;
   }
 
   return (
-    <div className={customStyle.postcard}>
+    <div className={customStyle.block}>
       <div className={customStyle.image}>
         <Image src={postImage} alt={title} layout="fill" objectFit="cover" />
       </div>

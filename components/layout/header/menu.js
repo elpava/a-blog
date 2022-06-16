@@ -1,19 +1,13 @@
-import { FaBars } from 'react-icons/fa';
+import { FaBars, FaTimes } from 'react-icons/fa';
 
-import styles from './header.module.scss';
+import styles from './menu.module.scss';
 
-function Menu({ onToggle, onMouseEnter, onMouseLeave }) {
+function Menu({ onToggle, toggleState }) {
   return (
-    <div
-      onClick={onToggle}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-    >
-      <button className={styles.menu}>
-        <FaBars />
-        <span>Menu</span>
-      </button>
-    </div>
+    <button className={styles.toggle} onClick={onToggle}>
+      {!toggleState ? <FaBars /> : <FaTimes />}
+      <span>Menu</span>
+    </button>
   );
 }
 

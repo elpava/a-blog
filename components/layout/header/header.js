@@ -1,14 +1,12 @@
 import { useState, useRef } from 'react';
 
+import Navbar from './navbar';
 import Menu from './menu';
 import Logo from './logo';
 import Search from './search';
 import Dropdown from './dropdown';
 
-import {
-  dropdownMenuPageItems,
-  dropdownMenuSocialItems,
-} from '../../../store/dropdown-menu-items';
+import { headerMenuItems } from '../../../store/menu-items';
 
 import useClickOutsideElement from '../../../hooks/useClickOutside';
 
@@ -31,14 +29,14 @@ function Header() {
   return (
     <header className={styles.header} ref={headerTagRef}>
       <div className={styles.container} onLoad={onLoadHeaderHandler}>
-        <nav className={styles.nav} ref={navTagRef}>
-          <Menu onToggle={toggleMenuHandler} />
+        <Navbar refNavbar={navTagRef}>
+          <Menu onToggle={toggleMenuHandler} toggleState={toggle} />
           <Logo parentHeight={headerHeight} />
           <Search />
-        </nav>
+        </Navbar>
 
         <Dropdown
-          menuItems={{ dropdownMenuPageItems, dropdownMenuSocialItems }}
+          menuItems={headerMenuItems}
           toggleState={toggle}
           onToggle={toggleMenuHandler}
         />

@@ -12,6 +12,7 @@ function posts(props) {
       <Head>
         <title>Blog&apos;s Posts</title>
       </Head>
+
       <PostCards posts={posts} />
     </>
   );

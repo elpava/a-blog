@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 
 import useScrollPosition from '../../../hooks/useScrollPosition';
 
-import styles from './header.module.scss';
+import styles from './logo.module.scss';
 
 function Logo({ parentHeight }) {
   const { asPath: path } = useRouter();
@@ -17,7 +17,7 @@ function Logo({ parentHeight }) {
       : `${styles.default}`;
 
   return (
-    <div className={styles.logo}>
+    <div className={styles.block}>
       <Link href="/">
         <a className={classes}>
           <Image src="/logo/logo-512.png" alt="logo" width={100} height={100} />

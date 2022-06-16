@@ -1,0 +1,10 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+
+  &:not(:last-child) {
+    @include m.horizontal-divider;
+    @include m.horizontal-divider-line;
+  }
+}

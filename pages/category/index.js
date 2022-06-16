@@ -6,6 +6,7 @@ import CategorizedPosts from '../../components/category-posts/categorized-posts'
 
 function Categories(props) {
   const { categorizedPosts } = props;
+
   return (
     <>
       <Head>

@@ -1,6 +1,8 @@
 import Logo from './logo';
 
-import ItemsList from './items-list';
+import { footerMenuItems } from '../../../store/menu-items';
+import MenuItem from './menu-item';
+import MenuItems from './menu-items';
 
 import styles from './footer.module.scss';
 
@@ -11,24 +13,8 @@ function Footer() {
         <div className={styles.logo}>
           <Logo />
         </div>
-        <div className={styles.menu}>
-          <ItemsList
-            items={[
-              { contact: '/contact' },
-              { about: '/about' },
-              { sitemap: '/sitemap' },
-            ]}
-          />
-        </div>
-        <div className={styles.social}>
-          <ItemsList
-            items={[
-              { facebook: 'https://facebook.com' },
-              { twitter: 'https://twitter.com' },
-              { youtube: 'https://youtube.com' },
-            ]}
-          />
-        </div>
+
+        <MenuItems items={footerMenuItems} />
       </section>
     </footer>
   );

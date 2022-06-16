@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import CategoryLable from '../ui/CategoryLabel';
+import CategoryLable from '../ui/category-label';
 
 import styles from './post-cards.module.scss';
 

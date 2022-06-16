@@ -1,0 +1,36 @@
+.field {
+  justify-self: end;
+
+  .input {
+    border: none;
+    caret-color: #777;
+
+    &::-webkit-input-placeholder {
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      padding-left: 67%;
+      color: #000;
+      @include m.primary-transition(padding-left);
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover::-webkit-input-placeholder {
+      padding-left: 64%;
+    }
+
+    &:focus::-webkit-input-placeholder {
+      padding-left: 0;
+    }
+  }
+
+  .submit {
+    font-size: 1.4rem;
+    line-height: 100%;
+    border: none;
+    background: transparent;
+  }
+}

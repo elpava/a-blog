@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import CategoryLable from '../../ui/CategoryLabel';
+import CategoryLable from '../../ui/category-label';
 
 import styles from './feature.module.scss';
 
@@ -43,7 +43,6 @@ function ByFeature({ featurePostsData }) {
   return (
     <div className={`${styles.feature} mb_5`}>
       <h4 className={styles.title}>Featured</h4>
-      {/* <ul>{featurePosts}</ul> */}
       {featurePosts}
     </div>
   );

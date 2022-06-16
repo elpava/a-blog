@@ -1,25 +1,13 @@
-import styles from './header.module.scss';
 import MenuItems from './menu-items';
 
+import styles from './dropdown.module.scss';
+
 function Dropdown({ toggleState, onToggle, menuItems }) {
-  const { dropdownMenuPageItems, dropdownMenuSocialItems } = menuItems;
-
   return (
-    <div className={styles.submenu}>
+    <div className={styles.wrapper}>
       {toggleState && (
-        <div className={styles.container}>
-          <div className={styles.page}>
-            <span className={styles.title}>page</span>
-            <MenuItems items={dropdownMenuPageItems} handleToggle={onToggle} />
-          </div>
-
-          <div className={styles.social}>
-            <span className={styles.title}>social</span>
-            <MenuItems
-              items={dropdownMenuSocialItems}
-              handleToggle={onToggle}
-            />
-          </div>
+        <div className={styles.submenu}>
+          <MenuItems items={menuItems} onToggle={onToggle} />
         </div>
       )}
     </div>

@@ -1,0 +1,25 @@
+.postcard {
+  @include m.image-wrapper(680px);
+  flex: 1 1 500px;
+  border-radius: v.$card-radius;
+  overflow: hidden;
+
+  .info {
+    position: relative;
+    padding: 88% 2.5rem 0;
+
+    .header {
+      display: flex;
+      align-items: center;
+      column-gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    time {
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      color: #fff;
+    }
+  }
+}

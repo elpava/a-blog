@@ -1,0 +1,32 @@
+.page,
+.social {
+  li {
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-transform: capitalize;
+
+    &:not(:last-child) {
+      margin-bottom: 0.3rem;
+    }
+
+    a {
+      color: inherit;
+    }
+  }
+}
+
+.page,
+.social {
+  &:not(:last-child) {
+    border-right: 1px solid #e4e4e4;
+  }
+}
+
+.title {
+  display: block;
+  font-family: inherit;
+  font-size: 1.1rem;
+  text-transform: capitalize;
+  color: #777;
+  margin-bottom: 1.5rem;
+}

@@ -1,0 +1,31 @@
+.block {
+  flex: 1 1 350px;
+
+  .image {
+    @include m.image-wrapper(240px);
+    border-radius: v.$card-radius;
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }
+
+  .image_lg {
+    @include m.image-wrapper(450px);
+    border-radius: v.$card-radius;
+    overflow: hidden;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .excerpt {
+    font-size: 1.2rem;
+  }
+
+  .title_lg {
+    font-size: 2.5rem;
+  }
+}
