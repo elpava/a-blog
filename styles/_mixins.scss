@@ -1,15 +1,3 @@
-@mixin category-label {
-  display: inline-block;
-  font-size: 0.8rem;
-  font-family: inherit;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #333;
-  background-color: #efefef;
-  border-radius: 5px;
-  padding: 4px 10px;
-}
-
 @mixin horizontal-divider {
   // margin-top: 1rem;
   margin-bottom: 3rem;

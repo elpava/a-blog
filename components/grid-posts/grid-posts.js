@@ -20,7 +20,7 @@ function GridPosts({ posts, featurePosts, tags }) {
         <StickyMenu>
           <ByCategory categoriesData={categories} />
           <ByFeature featurePostsData={featurePosts} />
-          <ByTags tagsData={tags} />
+          <ByTags tagsData={tags} withTitle />
         </StickyMenu>
       </Sidebar>
     </Grid>

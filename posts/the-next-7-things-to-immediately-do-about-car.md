@@ -41,7 +41,7 @@ Driver’s Ed teaches students how to drive, but there are plenty of other impor
 
    Follow your vehicle’s maintenance recommendations stated in your owner's manual - this includes things like oil changes and tire rotations. Also, keep in mind, if you own a vehicle in Virginia you will be to a Virginia State Inspection every year and a Virginia Emissions Inspection every two years.
 
-![a yellow audi car](/the-next-7-things-to-immediately-do-about-car/a-yellow-audi-car.jpg)
+![a yellow audi car](/posts/the-next-7-things-to-immediately-do-about-car/a-yellow-audi-car.jpg)
 
 We understand that as a new driver, there’s a lot to keep in mind. Start good driving habits now by following these tips:
 

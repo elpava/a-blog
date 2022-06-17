@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import styles from './tags.module.scss';
 
-function ByTags({ tagsData }) {
+function ByTags({ tagsData, withTitle }) {
   const uniqueTags = [...new Set(tagsData.flat(1))];
 
   const tags = uniqueTags.map(tag => (
@@ -15,7 +15,7 @@ function ByTags({ tagsData }) {
 
   return (
     <div className={styles.tags}>
-      <h4 className={styles.title}>Tags</h4>
+      {withTitle && <h4 className={styles.title}>Tags</h4>}
       {tags}
     </div>
   );

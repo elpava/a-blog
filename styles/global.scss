@@ -25,15 +25,14 @@ a {
 time {
   font-size: 0.85rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   color: #616161;
 }
 
 main {
   max-width: v.$desktop-max-width;
   width: v.$main-width;
-  margin-left: auto;
-  margin-right: auto;
+  @include m.center;
   padding-top: 109px;
   @include m.horizontal-divider;
   @include m.horizontal-divider-line;

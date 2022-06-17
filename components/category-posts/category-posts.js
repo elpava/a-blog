@@ -27,7 +27,7 @@ function CategoryPosts({ category, categories, posts, tags }) {
         <Sidebar>
           <StickyMenu>
             <ByCategory categoriesData={categories} activeItem />
-            <ByTags tagsData={tags} />
+            <ByTags tagsData={tags} withTitle />
           </StickyMenu>
         </Sidebar>
       </Grid>

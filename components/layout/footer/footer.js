@@ -1,7 +1,7 @@
 import Logo from './logo';
 
 import { footerMenuItems } from '../../../store/menu-items';
-import MenuItem from './menu-item';
+
 import MenuItems from './menu-items';
 
 import styles from './footer.module.scss';
