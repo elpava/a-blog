@@ -1,5 +1,7 @@
-function Contact(props) {
-  return <h1>contact</h1>;
+import ContactPage from '../components/contact-page';
+
+function Contact() {
+  return <ContactPage />;
 }
 
 export default Contact;

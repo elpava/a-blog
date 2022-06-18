@@ -1,5 +1,7 @@
-function About(props) {
-  return <h1>about</h1>;
+import AboutPage from '../components/about-page';
+
+function About() {
+  return <AboutPage />;
 }
 
 export default About;

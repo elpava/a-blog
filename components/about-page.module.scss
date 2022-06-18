@@ -1,0 +1,36 @@
+.container {
+  @include m.horizontal-divider;
+  @include m.horizontal-divider-line;
+}
+
+.content {
+  max-width: 800px;
+  width: 85%;
+  @include m.center;
+
+  h1 {
+    font-size: 3.5rem;
+    margin-bottom: 3rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+  }
+}
+
+.images {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 1rem;
+
+  div {
+    position: relative;
+    flex: 1 1 0%;
+    height: 38rem;
+
+    img {
+      border-radius: v.$card-radius;
+    }
+  }
+}

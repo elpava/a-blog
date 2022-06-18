@@ -1,0 +1,20 @@
+.button {
+  display: inline-block;
+  width: 100%;
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 110%;
+  border-radius: v.$card-radius;
+  text-align: center;
+  text-transform: capitalize;
+  color: #eee;
+  background-color: #111;
+  border: 2px solid #111;
+  padding: 1rem 0;
+  transition: color 0.25s, background-color 0.25s;
+
+  &:hover {
+    color: #111;
+    background-color: transparent;
+  }
+}
