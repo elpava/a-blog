@@ -20,7 +20,7 @@ function ByCategory({ categoriesData, activeItem }) {
   });
 
   return (
-    <div className={`${styles.category} mb_5`}>
+    <div className={`${styles.block} mb_5`}>
       <h4 className={styles.title}>Categories</h4>
       <ul>{categoriesList}</ul>
     </div>

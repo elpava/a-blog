@@ -1,10 +1,8 @@
-.container {
-  .title {
-    text-align: center;
-    @include m.horizontal-divider;
-    @include m.horizontal-divider-line;
-    padding: 4.5rem 0;
-  }
+.title {
+  text-align: center;
+  @include m.horizontal-divider;
+  @include m.horizontal-divider-line;
+  padding: 4.5rem 0;
 
   h1 {
     font-size: 3.5rem;

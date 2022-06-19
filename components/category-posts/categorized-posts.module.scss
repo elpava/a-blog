@@ -1,9 +1,4 @@
 .container {
-  &:not(:last-child) {
-    @include m.horizontal-divider;
-    @include m.horizontal-divider-line;
-  }
-
   .link {
     display: block;
     text-transform: uppercase;

@@ -2,6 +2,6 @@
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
-  @include m.horizontal-divider;
-  @include m.horizontal-divider-line;
+  // @include m.horizontal-divider;
+  // @include m.horizontal-divider-line;
 }

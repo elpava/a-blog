@@ -4,9 +4,9 @@ import Sidebar from '../grid-posts/sidebar/sidebar';
 import StickyMenu from '../layout/sticky-menu';
 import ByCategory from '../grid-posts/sidebar/category';
 import ByTags from '../grid-posts/sidebar/tags';
+import PostCards from './post-cards';
 
 import styles from './category-posts.module.scss';
-import PostCards from './post-cards';
 
 function CategoryPosts({ category, categories, posts, tags }) {
   if (!posts) {
@@ -14,10 +14,10 @@ function CategoryPosts({ category, categories, posts, tags }) {
   }
 
   return (
-    <section className={styles.container}>
-      <div className={styles.title}>
+    <>
+      <section className={styles.title}>
         <h1>{category}</h1>
-      </div>
+      </section>
 
       <Grid>
         <PostsBlock>
@@ -31,7 +31,7 @@ function CategoryPosts({ category, categories, posts, tags }) {
           </StickyMenu>
         </Sidebar>
       </Grid>
-    </section>
+    </>
   );
 }
 

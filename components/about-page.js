@@ -1,6 +1,7 @@
 import Image from 'next/image';
-import styles from './about-page.module.scss';
 import Subscribe from './subscribe';
+
+import styles from './about-page.module.scss';
 
 function AboutPage() {
   return (
@@ -74,13 +75,15 @@ function AboutPage() {
 
       <Subscribe />
 
-      <div className={styles.content}>
-        <p>Let&apos;s get started with an important question.</p>
-        <p>
-          Blogging may mean different things depending on your niche — so
-          let&apos;s begin with this definition.
-        </p>
-      </div>
+      <section className={styles.container}>
+        <div className={styles.content}>
+          <p>Let&apos;s get started with an important question.</p>
+          <p>
+            Blogging may mean different things depending on your niche — so
+            let&apos;s begin with this definition.
+          </p>
+        </div>
+      </section>
     </>
   );
 }

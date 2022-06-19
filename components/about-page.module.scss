@@ -1,8 +1,3 @@
-.container {
-  @include m.horizontal-divider;
-  @include m.horizontal-divider-line;
-}
-
 .content {
   max-width: 800px;
   width: 85%;

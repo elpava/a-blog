@@ -14,7 +14,7 @@ function ByTags({ tagsData, withTitle }) {
   ));
 
   return (
-    <div className={styles.tags}>
+    <div className={styles.block}>
       {withTitle && <h4 className={styles.title}>Tags</h4>}
       {tags}
     </div>

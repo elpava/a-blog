@@ -7,9 +7,9 @@ import ByTags from '../grid-posts/sidebar/tags';
 import CategoryLable from '../ui/category-label';
 import CustomImage from '../ui/custom-image-tag';
 import { FaRegArrowAltCircleLeft } from 'react-icons/fa';
+import PostCards from './post-cards';
 
 import styles from './post.module.scss';
-import PostCards from './post-cards';
 
 function Post({ postsData, postData }) {
   const {
@@ -35,7 +35,7 @@ function Post({ postsData, postData }) {
 
   return (
     <>
-      <section className={styles.hero}>
+      <div className={styles.hero}>
         <Image
           src={mainImagePath}
           alt={title}
@@ -43,7 +43,7 @@ function Post({ postsData, postData }) {
           height={mainImageHeight}
           className={styles.hero}
         />
-      </section>
+      </div>
 
       <section className={styles.container}>
         <section className={styles.content}>

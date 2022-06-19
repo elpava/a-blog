@@ -34,6 +34,9 @@ main {
   width: v.$main-width;
   @include m.center;
   padding-top: 109px;
+}
+
+main > section {
   @include m.horizontal-divider;
   @include m.horizontal-divider-line;
 }

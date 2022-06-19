@@ -5,8 +5,8 @@ import styles from './subscribe.module.scss';
 
 function Subscribe() {
   return (
-    <section className={styles.subscribe}>
-      <div className={styles.subscribe_block}>
+    <section className={styles.container}>
+      <div className={styles.wrapper}>
         <Image
           src={background}
           alt="subscribe background"
@@ -14,8 +14,8 @@ function Subscribe() {
           objectFit="cover"
         />
         <div className={styles.content}>
-          <h1 className={styles.content_title}>Subscribe to blog</h1>
-          <h4 className={styles.content_paragraph}>
+          <h1 className={styles.title}>Subscribe to blog</h1>
+          <h4 className={styles.paragraph}>
             Sign up to our newsletters and we&apos;ll keep <br /> you in the
             loop.
           </h4>
@@ -24,14 +24,10 @@ function Subscribe() {
               type="email"
               name="email"
               placeholder="Email Address..."
-              className={styles.email_input}
+              className={styles.input}
               required
             />
-            <input
-              type="submit"
-              value="Subscribe"
-              className={styles.submit_button}
-            />
+            <input type="submit" value="Subscribe" className={styles.button} />
           </form>
         </div>
       </div>

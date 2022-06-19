@@ -12,7 +12,7 @@ function ByFeature({ featurePostsData }) {
     const postImage = `${process.env.NEXT_PUBLIC_POST_IMAGE_FOLDER}/${slug}/${image}`;
 
     return (
-      <div key={slug} className={styles.feature_post}>
+      <div key={slug} className={styles.row}>
         <Link href={postSlug}>
           <a>
             <div className={styles.image}>
@@ -41,7 +41,7 @@ function ByFeature({ featurePostsData }) {
   });
 
   return (
-    <div className={`${styles.feature} mb_5`}>
+    <div className={`${styles.block} mb_5`}>
       <h4 className={styles.title}>Featured</h4>
       {featurePosts}
     </div>
