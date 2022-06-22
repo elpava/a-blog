@@ -8,11 +8,9 @@ function MenuItems({ items = [] }) {
 
     return (
       <div className={styles[title]} key={title}>
-        <div className={styles.wrapper}>
-          <ul>
-            <MenuItem items={items} />
-          </ul>
-        </div>
+        <ul>
+          <MenuItem items={items} />
+        </ul>
       </div>
     );
   });

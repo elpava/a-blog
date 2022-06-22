@@ -1,9 +1,31 @@
 .field {
   justify-self: end;
 
+  @include m.responsive(mobile) {
+    display: none;
+
+    &.switch {
+      display: block;
+      width: 100%;
+      @include m.horizontal-divider-line;
+      padding-bottom: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  @include m.responsive(bigger-than-mobile) {
+    &.switch {
+      display: none;
+    }
+  }
+
   .input {
     border: none;
     caret-color: #777;
+
+    &:focus {
+      outline: none;
+    }
 
     &::-webkit-input-placeholder {
       font-size: 0.9rem;
@@ -12,18 +34,25 @@
       padding-left: 67%;
       color: #000;
       @include m.primary-transition(padding-left);
+
+      @include m.responsive(mobile) {
+        padding-left: unset;
+      }
+
+      @include m.responsive(bigger-than-mobile) {
+        padding-left: 67%;
+        @include m.primary-transition(padding-left);
+      }
     }
 
-    &:focus {
-      outline: none;
-    }
+    @include m.responsive(bigger-than-mobile) {
+      &:hover::-webkit-input-placeholder {
+        padding-left: 64%;
+      }
 
-    &:hover::-webkit-input-placeholder {
-      padding-left: 64%;
-    }
-
-    &:focus::-webkit-input-placeholder {
-      padding-left: 0;
+      &:focus::-webkit-input-placeholder {
+        padding-left: 0;
+      }
     }
   }
 

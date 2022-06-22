@@ -1,6 +1,10 @@
 .block {
   justify-self: center;
 
+  @include m.responsive(mobile) {
+    justify-self: end;
+  }
+
   .text {
     font-size: 2.5rem;
     font-family: 'Delius Swash Caps', cursive;
@@ -26,7 +30,17 @@
     span {
       span {
         img {
-          height: 100px !important;
+          @include m.responsive(bigger-than-mobile) {
+            height: 100px !important;
+          }
+
+          @include m.responsive(tablet) {
+            height: 65px !important;
+          }
+
+          @include m.responsive(mobile) {
+            height: 50px !important;
+          }
         }
       }
     }

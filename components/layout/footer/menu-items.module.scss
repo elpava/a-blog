@@ -1,23 +1,14 @@
 .page,
 .social {
+  flex: 1 0 0%;
+
   &:not(:last-child) {
     border-right: 1px solid #e4e4e4;
   }
-}
 
-.page {
-  flex: 1 0 300px;
-
-  .wrapper {
-    margin-left: 2rem;
-    margin-right: 2rem;
-  }
-}
-
-.social {
-  flex: 1 0 300px;
-
-  .wrapper {
-    margin-left: 2rem;
+  @include m.responsive(mobile) {
+    ul {
+      all: unset;
+    }
   }
 }

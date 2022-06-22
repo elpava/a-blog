@@ -4,6 +4,16 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Delius+Swash+Caps&display=swap');
 
+html {
+  @include m.responsive(tablet) {
+    font-size: 82%;
+  }
+
+  @include m.responsive(mobile) {
+    font-size: 62.5%;
+  }
+}
+
 h1,
 h2,
 h3,
@@ -41,8 +51,10 @@ main > section {
   @include m.horizontal-divider-line;
 }
 
-.top_row_gap {
-  padding-top: v.$space-for-header;
+@include m.responsive(bigger-than-mobile) {
+  .top_row_gap {
+    padding-top: v.$space-for-header;
+  }
 }
 
 .sticky {

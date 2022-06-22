@@ -14,7 +14,9 @@ function Footer() {
           <Logo />
         </div>
 
-        <MenuItems items={footerMenuItems} />
+        <div className={styles.menus}>
+          <MenuItems items={footerMenuItems} />
+        </div>
       </section>
     </footer>
   );

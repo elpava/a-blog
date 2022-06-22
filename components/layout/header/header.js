@@ -16,7 +16,8 @@ function Header() {
   const [toggle, setToggle] = useState(false);
   const [headerHeight, setHeaderHeight] = useState(0);
   const headerTagRef = useRef();
-  const { ref: navTagRef } = useClickOutsideElement(setToggle);
+  // const { ref: navTagRef } = useClickOutsideElement(setToggle);
+  const { ref: dropdownRef } = useClickOutsideElement(setToggle);
 
   const toggleMenuHandler = () => setToggle(prevState => !prevState);
 
@@ -29,7 +30,7 @@ function Header() {
   return (
     <header className={styles.header} ref={headerTagRef}>
       <div className={styles.container} onLoad={onLoadHeaderHandler}>
-        <Navbar refNavbar={navTagRef}>
+        <Navbar>
           <Menu onToggle={toggleMenuHandler} toggleState={toggle} />
           <Logo parentHeight={headerHeight} />
           <Search />
@@ -39,6 +40,7 @@ function Header() {
           menuItems={headerMenuItems}
           toggleState={toggle}
           onToggle={toggleMenuHandler}
+          dropdownRef={dropdownRef}
         />
       </div>
     </header>

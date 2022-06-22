@@ -2,9 +2,13 @@ import { FaSearch } from 'react-icons/fa';
 
 import styles from './search.module.scss';
 
-function Search() {
+function Search({ hideOnDesktop }) {
+  let classes = null;
+
+  classes = hideOnDesktop ? styles.switch : '';
+
   return (
-    <form className={styles.field}>
+    <form className={`${styles.field} ${classes}`}>
       <input
         type="text"
         id="search"

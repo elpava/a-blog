@@ -18,7 +18,9 @@
 .page,
 .social {
   &:not(:last-child) {
-    border-right: 1px solid #e4e4e4;
+    @include m.responsive(bigger-than-mobile) {
+      border-right: 1px solid #e4e4e4;
+    }
   }
 }
 

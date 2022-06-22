@@ -1,5 +1,9 @@
+$laptop-L-width: 1441px;
+$laptop-width: 1025px;
+$tablet-width: 769px;
+$mobile-width: 426px;
+
 @mixin horizontal-divider {
-  // margin-top: 1rem;
   margin-bottom: 3rem;
   padding-bottom: 3rem;
 }
@@ -30,4 +34,32 @@
 
 @mixin primary-transition($item) {
   transition: #{$item} 0.25s;
+}
+
+@mixin responsive($size) {
+  @if $size == mobile {
+    @media (max-width: $mobile-width) {
+      @content;
+    }
+  } @else if $size == bigger-than-mobile {
+    @media (min-width: $mobile-width) {
+      @content;
+    }
+  } @else if $size == tablet {
+    @media (max-width: $tablet-width) {
+      @content;
+    }
+  } @else if $size == bigger-than-tablet {
+    @media (min-width: $tablet-width) {
+      @content;
+    }
+  } @else if $size == laptop {
+    @media (max-width: $laptop-width) {
+      @content;
+    }
+  } @else if $size == desktop {
+    @media (max-width: $laptop-L-width) {
+      @content;
+    }
+  }
 }
