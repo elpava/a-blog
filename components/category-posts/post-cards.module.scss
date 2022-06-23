@@ -1,21 +1,21 @@
 .postcard {
-  display: flex;
-  gap: 2rem;
   margin-bottom: 3rem;
 
-  .wrapper {
-    width: 470px;
+  @include m.responsive(bigger-than-mobile) {
+    display: flex;
+    gap: 2rem;
+  }
 
-    .image {
-      position: relative;
-      width: 100%;
-      height: 230px;
+  .image {
+    @include m.image-wrapper(230px);
+
+    @include m.responsive(mobile) {
+      @include m.image-wrapper(240px);
+      margin-bottom: 1rem;
     }
   }
 
   .info {
-    flex: 1 0 390px;
-
     .header {
       margin-bottom: 1rem;
     }

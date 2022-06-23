@@ -31,6 +31,10 @@
       padding-left: 2rem;
       position: relative;
 
+      @include m.responsive(mobile) {
+        padding-left: 3rem;
+      }
+
       &::before {
         content: '';
         position: absolute;

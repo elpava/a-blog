@@ -17,17 +17,15 @@ function PostCards({ posts }) {
 
     return (
       <div key={slug} className={styles.postcard}>
-        <div className={styles.wrapper}>
+        <div className={styles.image}>
           <Link href={postSlug}>
             <a>
-              <div className={styles.image}>
-                <Image
-                  src={postImage}
-                  alt={title}
-                  layout="fill"
-                  objectFit="cover"
-                />
-              </div>
+              <Image
+                src={postImage}
+                alt={title}
+                layout="fill"
+                objectFit="cover"
+              />
             </a>
           </Link>
         </div>
