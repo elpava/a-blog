@@ -19,8 +19,8 @@
     span {
       span {
         img {
-          height: 50px !important;
-          transition: height 0.5s;
+          max-height: 35px !important;
+          transition: max-height 0.5s;
         }
       }
     }
@@ -30,16 +30,16 @@
     span {
       span {
         img {
+          max-height: 100px !important;
           @include m.responsive(bigger-than-mobile) {
-            height: 100px !important;
           }
 
           @include m.responsive(tablet) {
-            height: 65px !important;
+            max-height: 65px !important;
           }
 
           @include m.responsive(mobile) {
-            height: 50px !important;
+            max-height: 50px !important;
           }
         }
       }

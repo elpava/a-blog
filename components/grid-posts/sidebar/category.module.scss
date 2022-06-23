@@ -1,4 +1,16 @@
 .block {
+  @include m.responsive(bigger-than-tablet) {
+    margin-bottom: 5rem;
+  }
+
+  @include m.responsive(tablet) {
+    margin-bottom: 4rem;
+  }
+
+  @include m.responsive(mobile) {
+    margin-bottom: 3rem;
+  }
+
   .title {
     font-size: 1.1rem;
     margin-bottom: 2rem;

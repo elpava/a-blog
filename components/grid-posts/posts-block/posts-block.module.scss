@@ -1,5 +1,8 @@
 .container {
   width: 100%;
-  @include m.vertical-divider;
-  @include m.vertical-divider-line;
+
+  @include m.responsive(bigger-than-mobile) {
+    @include m.vertical-divider;
+    @include m.vertical-divider-line;
+  }
 }

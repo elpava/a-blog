@@ -1,4 +1,16 @@
 .block {
+  @include m.responsive(bigger-than-tablet) {
+    margin-bottom: 5rem;
+  }
+
+  @include m.responsive(tablet) {
+    margin-bottom: 4rem;
+  }
+
+  @include m.responsive(mobile) {
+    margin-bottom: 3rem;
+  }
+
   .title {
     font-size: 1.1rem;
     margin-bottom: 2rem;
@@ -16,6 +28,12 @@
       height: 6rem;
       float: left;
       margin-right: 1.25rem;
+      margin-bottom: 1.25rem;
+
+      @include m.responsive(tablet) {
+        width: 4.5rem;
+        height: 4.5rem;
+      }
 
       img {
         border-radius: 100px;

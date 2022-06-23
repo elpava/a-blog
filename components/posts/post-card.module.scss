@@ -1,17 +1,25 @@
 .block {
   flex: 1 1 350px;
 
+  @include m.responsive(tablet) {
+    flex: 1 1 150px;
+  }
+
   .image {
     @include m.image-wrapper(240px);
-    border-radius: v.$card-radius;
+    border-radius: v.$primary-rounded;
     margin-bottom: 1rem;
     overflow: hidden;
   }
 
   .image_lg {
     @include m.image-wrapper(450px);
-    border-radius: v.$card-radius;
+    border-radius: v.$primary-rounded;
     overflow: hidden;
+
+    @include m.responsive(tablet) {
+      @include m.image-wrapper(250px);
+    }
   }
 
   .header {

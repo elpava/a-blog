@@ -8,7 +8,7 @@
     max-width: v.$desktop-max-width;
     width: v.$main-width;
     @include m.center;
-    position: relative;
     @include m.horizontal-divider-line;
+    position: relative;
   }
 }

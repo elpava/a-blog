@@ -5,7 +5,7 @@
     padding-bottom: 2rem;
 
     img {
-      border-radius: v.$card-radius;
+      border-radius: v.$primary-rounded;
     }
   }
 
@@ -16,9 +16,8 @@
     text-align: center;
     color: #fafafa;
     background-color: #121212;
-    border-radius: v.$card-radius;
-    padding-top: 3.5rem;
-    padding-bottom: 3.5rem;
+    border-radius: v.$primary-rounded;
+    padding: 3.5rem 3rem;
     @include m.center;
 
     .title {
@@ -33,6 +32,12 @@
       margin-bottom: 2rem;
     }
 
+    form {
+      max-width: 425px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
     .input,
     .button {
       height: 50px;
@@ -40,12 +45,20 @@
     }
 
     .input {
+      max-width: 100%;
       width: 280px;
       background-color: #333;
       border: none;
       padding-left: 15px;
       padding-right: 15px;
-      margin-right: 6px;
+
+      @include m.responsive(bigger-than-mobile) {
+        margin-right: 6px;
+      }
+
+      @include m.responsive(mobile) {
+        margin-bottom: 6px;
+      }
 
       &:active,
       &:focus {
@@ -60,6 +73,10 @@
       padding-left: 30px;
       padding-right: 30px;
       transition: all 0.2s;
+
+      @include m.responsive(mobile) {
+        width: 100%;
+      }
 
       &:hover {
         color: #fafafa;

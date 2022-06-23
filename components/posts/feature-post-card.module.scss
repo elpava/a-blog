@@ -1,12 +1,12 @@
 .postcard {
-  @include m.image-wrapper(680px);
-  flex: 1 1 500px;
-  border-radius: v.$card-radius;
+  @include m.image-wrapper();
+  flex: 1 1 185px;
+  border-radius: v.$primary-rounded;
   overflow: hidden;
 
   .info {
     position: relative;
-    padding: 88% 2.5rem 0;
+    padding: 88% 2.5rem 5%;
 
     .header {
       display: flex;

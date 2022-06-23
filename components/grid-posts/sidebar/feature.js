@@ -41,7 +41,7 @@ function ByFeature({ featurePostsData }) {
   });
 
   return (
-    <div className={`${styles.block} mb_5`}>
+    <div className={`${styles.block}`}>
       <h4 className={styles.title}>Featured</h4>
       {featurePosts}
     </div>

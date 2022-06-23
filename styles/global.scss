@@ -43,7 +43,7 @@ main {
   max-width: v.$desktop-max-width;
   width: v.$main-width;
   @include m.center;
-  padding-top: 109px;
+  padding-top: 103px;
 }
 
 main > section {
@@ -51,7 +51,7 @@ main > section {
   @include m.horizontal-divider-line;
 }
 
-@include m.responsive(bigger-than-mobile) {
+@include m.responsive(bigger-than-tablet) {
   .top_row_gap {
     padding-top: v.$space-for-header;
   }
