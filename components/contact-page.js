@@ -1,10 +1,26 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 import PrimaryButton from './ui/primary-button';
+import Notification from './ui/notification';
 
 import styles from './contact-page.module.scss';
 
+async function storeData(formData) {
+  const response = await fetch('/api/contact', {
+    method: 'POST',
+    body: JSON.stringify(formData),
+    headers: { 'Content-Type': 'application/json' },
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) throw new Error(data.message || 'Something went wrong!');
+
+  return data;
+}
+
 function ContactPage() {
+  const [requestStatus, setRequestStatus] = useState();
   const nameInputRef = useRef('');
   const emailInputRef = useRef('');
   const messageInputRef = useRef('');
@@ -12,9 +28,9 @@ function ContactPage() {
   const onSubmitHandler = async e => {
     e.preventDefault();
 
-    const enteredName = nameInputRef.current.value;
-    const enteredEmail = emailInputRef.current.value;
-    const enteredMessage = messageInputRef.current.value;
+    const enteredName = nameInputRef.current?.value;
+    const enteredEmail = emailInputRef.current?.value;
+    const enteredMessage = messageInputRef.current?.value;
 
     const formData = {
       name: enteredName,
@@ -22,19 +38,27 @@ function ContactPage() {
       message: enteredMessage,
     };
 
-    const response = await fetch('/api/contact', {
-      method: 'POST',
-      body: JSON.stringify(formData),
-      headers: { 'Content-Type': 'application/json' },
+    setRequestStatus(prevState => {
+      return { title: 'pending', message: 'Sending message...' };
     });
-    const data = await response.json();
 
-    console.log(data);
+    try {
+      const data = await storeData(formData);
 
-    nameInputRef.current.value =
-      emailInputRef.current.value =
-      messageInputRef.current.value =
-        '';
+      setRequestStatus(prevState => {
+        return { title: 'success', message: 'Message sent successfully.' };
+      });
+
+      console.log(data);
+    } catch (err) {
+      setRequestStatus(prevState => {
+        return { title: 'error', message: err.message };
+      });
+    }
+
+    nameInputRef.current.value = '';
+    emailInputRef.current.value = '';
+    messageInputRef.current.value = '';
   };
 
   return (
@@ -51,24 +75,27 @@ function ContactPage() {
             type="text"
             placeholder="Name"
             ref={nameInputRef}
-            value={nameInputRef.current.value}
           />
           <input
             className={styles.input}
             type="email"
             placeholder="Email"
             ref={emailInputRef}
-            value={emailInputRef.current.value}
           />
           <textarea
             className={styles.input}
             rows={8}
             placeholder="Message"
             ref={messageInputRef}
-            value={messageInputRef.current.value}
           />
           <PrimaryButton type="submit" text="submit" />
         </form>
+        {requestStatus && (
+          <Notification
+            title={requestStatus.title}
+            message={requestStatus.message}
+          />
+        )}
       </div>
     </section>
   );

@@ -1,4 +1,4 @@
-import { insertDocument } from '../../lib/mongodb-utils';
+import { connectDatabase, insertDocument } from '../../lib/mongodb-utils';
 import { storeContactsData } from '../../lib/store-utils';
 
 async function handler(req, res) {
@@ -7,8 +7,16 @@ async function handler(req, res) {
     const email = req.body.email;
     const message = req.body.message;
 
-    if (!name || !email.includes('@') || !message) {
-      res.status(422).json({ message: 'Invalid inputs.' });
+    let client, result;
+
+    if (
+      !name ||
+      name.trim() === '' ||
+      !email.includes('@') ||
+      !message ||
+      message.trim() === ''
+    ) {
+      res.status(422).json({ message: 'Invalid input.' });
       return;
     }
 
@@ -19,13 +27,29 @@ async function handler(req, res) {
       message,
     };
 
-    insertDocument(newFormData);
+    try {
+      client = await connectDatabase();
+    } catch (err) {
+      res.status(500).json({ message: 'Connecting to the database failed.' });
+      // throw new Error('Connecting to the database failed.');
+    }
+
+    try {
+      result = await insertDocument(client, newFormData);
+      res
+        .status(201)
+        .json({ message: 'Successfully stored message.', data: newFormData });
+    } catch (err) {
+      client.close();
+      res.status(500).json({ message: 'Storing message failed.' });
+      return;
+    }
+
+    client.close();
 
     storeContactsData(newFormData);
 
-    res.status(201).json({ message: 'Success.', data: newFormData });
-  } else {
-    res.status(400).json({ message: 'error happend!' });
+    return result;
   }
 }
 

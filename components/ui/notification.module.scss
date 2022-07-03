@@ -1,0 +1,41 @@
+.block {
+  position: relative;
+  z-index: 9999;
+
+  .message {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    font-family: inherit;
+    font-size: 2rem;
+    font-weight: 500;
+    background-color: #9ea7ad;
+    color: #fff;
+    border-radius: 8px;
+    padding: 0.6rem 1.4rem;
+    box-shadow: 0 4px 10px 0px #bdbdbd;
+  }
+
+  .pending {
+    background-color: #2dccff;
+  }
+
+  .success {
+    background-color: #56f000;
+  }
+
+  .caution {
+    color: #252525;
+    background-color: #fce83a;
+  }
+
+  .warning {
+    background-color: #ffb302;
+  }
+
+  .error {
+    background-color: #ff3838;
+  }
+}
