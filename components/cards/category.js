@@ -1,10 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
+
 import CategoryLable from '../ui/category-label';
 
-import styles from './post-cards.module.scss';
+import styles from './category.module.scss';
 
-function PostCards({ posts }) {
+function CategoryPosts({ posts }) {
   const postsByCategory = posts.map(post => {
     const { category, date, excerpt, image, slug, title } = post;
     const postSlug = `/posts/${slug}`;
@@ -49,4 +50,4 @@ function PostCards({ posts }) {
   return <div className="block">{postsByCategory}</div>;
 }
 
-export default PostCards;
+export default CategoryPosts;

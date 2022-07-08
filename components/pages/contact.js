@@ -1,9 +1,9 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-import PrimaryButton from './ui/primary-button';
-import Notification from './ui/notification';
+import PrimaryButton from '../ui/primary-button';
+import Notification from '../ui/notification';
 
-import styles from './contact-page.module.scss';
+import styles from './contact.module.scss';
 
 async function storeData(formData) {
   const response = await fetch('/api/contact', {
@@ -19,11 +19,22 @@ async function storeData(formData) {
   return data;
 }
 
-function ContactPage() {
+function Contact() {
   const [requestStatus, setRequestStatus] = useState();
+  const [errorMessage, setErrorMessage] = useState();
   const nameInputRef = useRef('');
   const emailInputRef = useRef('');
   const messageInputRef = useRef('');
+  let notificationMessage;
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (requestStatus === 'success' || requestStatus === 'error')
+        setRequestStatus('');
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, [requestStatus]);
 
   const onSubmitHandler = async e => {
     e.preventDefault();
@@ -38,28 +49,35 @@ function ContactPage() {
       message: enteredMessage,
     };
 
-    setRequestStatus(prevState => {
-      return { title: 'pending', message: 'Sending message...' };
-    });
+    setRequestStatus('pending');
 
     try {
       const data = await storeData(formData);
 
-      setRequestStatus(prevState => {
-        return { title: 'success', message: 'Message sent successfully.' };
-      });
+      setRequestStatus('success');
 
       console.log(data);
     } catch (err) {
-      setRequestStatus(prevState => {
-        return { title: 'error', message: err.message };
-      });
+      setRequestStatus('error');
+      setErrorMessage(err.message);
     }
 
     nameInputRef.current.value = '';
     emailInputRef.current.value = '';
     messageInputRef.current.value = '';
   };
+
+  switch (requestStatus) {
+    case 'pending':
+      notificationMessage = 'Sending message...';
+      break;
+    case 'success':
+      notificationMessage = 'Message sent successfully.';
+      break;
+    case 'error':
+      notificationMessage = errorMessage;
+      break;
+  }
 
   return (
     <section className={styles.container}>
@@ -91,14 +109,11 @@ function ContactPage() {
           <PrimaryButton type="submit" text="submit" />
         </form>
         {requestStatus && (
-          <Notification
-            title={requestStatus.title}
-            message={requestStatus.message}
-          />
+          <Notification title={requestStatus} message={notificationMessage} />
         )}
       </div>
     </section>
   );
 }
 
-export default ContactPage;
+export default Contact;

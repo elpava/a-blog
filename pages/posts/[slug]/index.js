@@ -6,7 +6,7 @@ import {
   getPostsFiles,
 } from '../../../lib/posts-utils';
 
-import Post from '../../../components/posts/post';
+import Post from '../../../components/pages/post';
 
 function SinglePost(props) {
   const { post, posts } = props;

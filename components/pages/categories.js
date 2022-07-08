@@ -1,11 +1,11 @@
 import Link from 'next/link';
 
-import PostCards from '../posts/post-cards';
+import GridPosts from '../containers/grid-posts';
 
-import styles from './categorized-posts.module.scss';
+import styles from './categories.module.scss';
 
-function CategorizedPosts({ categorizedPosts }) {
-  const postsCategory = categorizedPosts.map(item => {
+function Categories({ categorizedPostsData }) {
+  const postsCategory = categorizedPostsData.map(item => {
     const { category, slug, posts } = item;
     const categorySlug = `/category/${slug}`;
 
@@ -16,7 +16,7 @@ function CategorizedPosts({ categorizedPosts }) {
             <h1>{category}</h1>
           </a>
         </Link>
-        <PostCards posts={posts} category={category} />
+        <GridPosts posts={posts} category={category} />
       </section>
     );
   });
@@ -24,4 +24,4 @@ function CategorizedPosts({ categorizedPosts }) {
   return <>{postsCategory}</>;
 }
 
-export default CategorizedPosts;
+export default Categories;

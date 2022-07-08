@@ -1,8 +1,8 @@
-import FeaturePostCard from './feature-post-card.js';
+import FeaturePostCard from '../cards/feature-post.js';
 
-import styles from './feature-post-cards.module.scss';
+import styles from './feature-posts.module.scss';
 
-function FeaturePostsCards({ posts }) {
+function FeaturePosts({ posts }) {
   const featuredPosts = posts.map(post => (
     <FeaturePostCard postData={post} key={post.slug} />
   ));
@@ -10,4 +10,4 @@ function FeaturePostsCards({ posts }) {
   return <section className={styles.container}>{featuredPosts}</section>;
 }
 
-export default FeaturePostsCards;
+export default FeaturePosts;

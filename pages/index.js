@@ -1,25 +1,28 @@
 import Head from 'next/head';
-import GridPosts from '../components/grid-posts/grid-posts';
+import Home from '../components/pages/home';
 
-import FeaturePostsCards from '../components/posts/feature-post-cards';
-import PostCards from '../components/posts/post-cards';
-import Subscribe from '../components/subscribe';
-
-import { getFeaturedPosts, getAllPosts, getAllTags } from '../lib/posts-utils';
+import {
+  getFeaturedPosts,
+  getAllPosts,
+  getAllPostsCategoryName,
+  getAllTags,
+} from '../lib/posts-utils';
 
 function HomePage(props) {
-  const { featuredPosts, allPosts, allTags } = props;
+  const { featuredPosts, allPosts, allPostsCategoryName, allTags } = props;
 
   return (
     <>
       <Head>
-        <title>Blog&apos;s Posts</title>
+        <title>Blog</title>
       </Head>
 
-      <FeaturePostsCards posts={featuredPosts} />
-      <PostCards posts={allPosts} />
-      <Subscribe />
-      <GridPosts posts={allPosts} featurePosts={featuredPosts} tags={allTags} />
+      <Home
+        featuredPostsData={featuredPosts}
+        allPostsData={allPosts}
+        allCategroriesData={allPostsCategoryName}
+        allTagsData={allTags}
+      />
     </>
   );
 }
@@ -27,10 +30,11 @@ function HomePage(props) {
 export async function getStaticProps() {
   const featuredPosts = getFeaturedPosts();
   const allPosts = getAllPosts();
+  const allPostsCategoryName = getAllPostsCategoryName();
   const allTags = getAllTags();
 
   return {
-    props: { featuredPosts, allPosts, allTags },
+    props: { featuredPosts, allPosts, allPostsCategoryName, allTags },
   };
 }
 

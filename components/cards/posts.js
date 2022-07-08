@@ -1,10 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
+
 import CategoryLable from '../ui/category-label';
 
-import styles from './post-card.module.scss';
+import styles from './posts.module.scss';
 
-function PostCard({ postData, grid }) {
+function Posts({ postData, grid }) {
   const { category, categorySlug, date, excerpt, image, slug, title } =
     postData;
 
@@ -17,20 +18,20 @@ function PostCard({ postData, grid }) {
   });
 
   const customStyle = {
-    block: styles.block,
+    card: styles.card,
     excerpt: styles.excerpt,
     image: styles.image,
     title: null,
   };
 
   if (grid) {
-    customStyle.block = `${styles.block} mb_5`;
+    customStyle.card = `${styles.card} mb_5`;
     customStyle.image = `${styles.image_lg} mb_1_half`;
     customStyle.title = `${styles.title_lg} mb_1`;
   }
 
   return (
-    <div className={customStyle.block}>
+    <div className={customStyle.card}>
       <div className={customStyle.image}>
         <Image src={postImage} alt={title} layout="fill" objectFit="cover" />
       </div>
@@ -52,4 +53,4 @@ function PostCard({ postData, grid }) {
   );
 }
 
-export default PostCard;
+export default Posts;

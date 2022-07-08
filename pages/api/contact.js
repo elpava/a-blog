@@ -31,7 +31,6 @@ async function handler(req, res) {
       client = await connectDatabase();
     } catch (err) {
       res.status(500).json({ message: 'Connecting to the database failed.' });
-      throw new Error('Connecting to the database failed.');
     }
 
     try {

@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import background from '../public/subscribe-background.jpg';
+import background from '../../public/subscribe-background.jpg';
 
 import styles from './subscribe.module.scss';
 

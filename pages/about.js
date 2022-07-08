@@ -1,7 +1,7 @@
-import AboutPage from '../components/about-page';
+import About from '../components/pages/about';
 
-function About() {
-  return <AboutPage />;
+function AboutPage() {
+  return <About />;
 }
 
-export default About;
+export default AboutPage;

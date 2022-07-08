@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-import CategoryPosts from '../../../components/category-posts/category-posts';
+import Category from '../../../components/pages/category';
 
 import {
   getPostsByCategory,
@@ -10,7 +10,7 @@ import {
 } from '../../../lib/posts-utils';
 import { capitalizeWords } from '../../../lib/utils';
 
-function Category(props) {
+function CategoryPage(props) {
   const { allTags, allPostsCategoryName, postsByCategory, slug } = props;
 
   const title = capitalizeWords(slug);
@@ -21,11 +21,11 @@ function Category(props) {
         <title>{title} Category</title>
       </Head>
 
-      <CategoryPosts
-        posts={postsByCategory}
+      <Category
+        postsData={postsByCategory}
         category={title}
-        categories={allPostsCategoryName}
-        tags={allTags}
+        categoriesData={allPostsCategoryName}
+        tagsData={allTags}
       />
     </>
   );
@@ -57,4 +57,4 @@ export async function getStaticPaths() {
   };
 }
 
-export default Category;
+export default CategoryPage;

@@ -2,9 +2,9 @@ import Head from 'next/head';
 
 import { getAllPosts } from '../../lib/posts-utils';
 
-import PostCards from '../../components/posts/post-cards';
+import Posts from '../../components/pages/posts';
 
-function posts(props) {
+function PostsPage(props) {
   const { posts } = props;
 
   return (
@@ -13,7 +13,7 @@ function posts(props) {
         <title>Blog&apos;s Posts</title>
       </Head>
 
-      <PostCards posts={posts} />
+      <Posts postsData={posts} />
     </>
   );
 }
@@ -28,4 +28,4 @@ export async function getStaticProps() {
   };
 }
 
-export default posts;
+export default PostsPage;

@@ -3,11 +3,11 @@ import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
-import ByTags from '../grid-posts/sidebar/tags';
+import ByTags from '../sidebar/tags';
 import CategoryLable from '../ui/category-label';
 import CustomImage from '../ui/custom-image-tag';
 import { FaRegArrowAltCircleLeft } from 'react-icons/fa';
-import PostCards from './post-cards';
+import GridPosts from '../containers/grid-posts';
 
 import styles from './post.module.scss';
 
@@ -78,7 +78,7 @@ function Post({ postsData, postData }) {
         </section>
       </section>
 
-      <PostCards posts={postsData} />
+      <GridPosts posts={postsData} />
     </>
   );
 }

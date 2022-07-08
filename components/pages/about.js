@@ -1,9 +1,9 @@
 import Image from 'next/image';
-import Subscribe from './subscribe';
+import Subscribe from '../containers/subscribe';
 
-import styles from './about-page.module.scss';
+import styles from './about.module.scss';
 
-function AboutPage() {
+function About() {
   return (
     <>
       <section className={styles.container}>
@@ -88,4 +88,4 @@ function AboutPage() {
   );
 }
 
-export default AboutPage;
+export default About;

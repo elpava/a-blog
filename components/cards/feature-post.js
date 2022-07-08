@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import CategoryLable from '../ui/category-label';
 
-import styles from './feature-post-card.module.scss';
+import styles from './feature-post.module.scss';
 
 function FeaturePostCard({ postData }) {
   const { category, categorySlug, date, image, slug, title } = postData;

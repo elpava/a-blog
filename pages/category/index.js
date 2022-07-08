@@ -2,9 +2,9 @@ import Head from 'next/head';
 
 import { getAllPostsByCategory } from '../../lib/posts-utils';
 
-import CategorizedPosts from '../../components/category-posts/categorized-posts';
+import Categories from '../../components/pages/categories';
 
-function Categories(props) {
+function CategoriesPage(props) {
   const { categorizedPosts } = props;
 
   return (
@@ -13,7 +13,7 @@ function Categories(props) {
         <title>Blog&apos;s Category</title>
       </Head>
 
-      <CategorizedPosts categorizedPosts={categorizedPosts} />
+      <Categories categorizedPostsData={categorizedPosts} />
     </>
   );
 }
@@ -24,4 +24,4 @@ export async function getStaticProps() {
   return { props: { categorizedPosts: allPostsByCategory } };
 }
 
-export default Categories;
+export default CategoriesPage;

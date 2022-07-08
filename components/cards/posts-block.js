@@ -1,12 +1,17 @@
 import Link from 'next/link';
-import PrimaryButton from '../../ui/primary-button';
+import Posts from './posts';
+import PrimaryButton from '../ui/primary-button';
 
 import styles from './posts-block.module.scss';
 
-function PostsBlock({ children }) {
+function PostsBlock({ posts }) {
+  const gridPosts = posts
+    .slice(-3)
+    .map(post => <Posts key={post.slug} postData={post} grid />);
+
   return (
     <section className={styles.container}>
-      {children}
+      <div className="block">{gridPosts}</div>
       <Link href="#">
         <a>
           <PrimaryButton text="see all posts" />
