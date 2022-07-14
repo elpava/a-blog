@@ -7,9 +7,9 @@ import useScrollPosition from '../../../hooks/useScrollPosition';
 import styles from './logo.module.scss';
 
 function Logo({ parentHeight }) {
-  const { asPath: path } = useRouter();
+  const { route } = useRouter();
   const postition = useScrollPosition();
-  const isHomepage = path === '/';
+  const isHomepage = route === '/';
 
   const classes =
     isHomepage && postition < parentHeight

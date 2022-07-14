@@ -4,8 +4,8 @@ import Footer from './footer/footer';
 import Header from './header/header';
 
 function Main({ children }) {
-  const { asPath: path } = useRouter();
-  const isHomepage = path === '/';
+  const { route } = useRouter();
+  const isHomepage = route === '/';
 
   const classes = isHomepage ? 'top_row_gap' : '';
 
