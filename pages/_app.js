@@ -2,25 +2,46 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 
-import Layout from '../components/layout/layout';
+import SiteLayout from '../components/layout/layout';
+import DashboardLayout from '../dashboard/components/layout/layout';
+import LoginProvider from '../dashboard/store/loginStateContext';
+
 import 'bootstrap/dist/css/bootstrap.css';
 import '../styles/global.scss';
 
 function MyApp({ Component, pageProps }) {
   const { route } = useRouter();
+  let component;
 
   useEffect(() => {
     import('bootstrap/dist/js/bootstrap.js');
   }, []);
 
-  const component =
-    route === '/admin' ? (
-      <Component {...pageProps} />
-    ) : (
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    );
+  switch (route) {
+    case '/admin':
+      component = (
+        <LoginProvider>
+          <Component {...pageProps} />
+        </LoginProvider>
+      );
+      break;
+    case '/dashboard':
+      component = (
+        <LoginProvider>
+          <DashboardLayout>
+            <Component {...pageProps} />
+          </DashboardLayout>
+        </LoginProvider>
+      );
+      break;
+    default:
+      component = (
+        <SiteLayout>
+          <Component {...pageProps} />
+        </SiteLayout>
+      );
+      break;
+  }
 
   return (
     <>
@@ -31,9 +52,6 @@ function MyApp({ Component, pageProps }) {
 
         <title>Blog Website</title>
       </Head>
-      {/* <Layout>
-        <Component {...pageProps} />
-      </Layout> */}
       {component}
     </>
   );

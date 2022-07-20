@@ -1,38 +1,48 @@
-import { useEffect, useState } from 'react';
-import Dashboard from '../dashboard/components/dashboard';
+import { useState, useEffect, useContext, useCallback } from 'react';
+import { useRouter } from 'next/router';
+
+import Admin from '../dashboard/components/pages/admin';
+import { LoginContext } from '../dashboard/store/loginStateContext';
 
 function AdminPage({ admin }) {
+  const route = useRouter();
   const validAdminData = admin;
-  const [accessState, setAccessState] = useState({
-    access: false,
-    message: null,
-    error: false,
-  });
-  const [adminData, setAdminData] = useState(null);
+  const { access, message, error, setLoginData } = useContext(LoginContext);
+  const [userData, setUserData] = useState(null);
 
-  function checkAccessState(adminData, validAdminData) {
-    if (
-      adminData?.username === validAdminData.username &&
-      adminData?.password === validAdminData.password
-    )
-      setAccessState({
-        access: true,
-        message: 'Login successful.',
-        error: false,
-      });
-    else
-      setAccessState({
-        access: false,
-        message: 'Login failed. Wrong username or password!',
-        error: true,
-      });
-  }
+  const memoizedCheckAccessState = useCallback(
+    (userData, validAdminData) => {
+      if (
+        userData?.username === validAdminData.username &&
+        userData?.password === validAdminData.password
+      ) {
+        setLoginData(prevState => ({
+          ...prevState,
+          access: true,
+          message: 'Login successful.',
+          error: false,
+        }));
+      } else {
+        setLoginData(prevState => ({
+          ...prevState,
+          access: false,
+          message: 'Login failed. Wrong username or password!',
+          error: true,
+        }));
+      }
+    },
+    [setLoginData]
+  );
 
   useEffect(() => {
-    if (adminData !== null) checkAccessState(adminData, validAdminData);
-  }, [adminData, validAdminData]);
+    if (userData !== null) memoizedCheckAccessState(userData, validAdminData);
+  }, [userData, validAdminData, memoizedCheckAccessState]);
 
-  return <Dashboard loginState={accessState} setLoginData={setAdminData} />;
+  useEffect(() => {
+    if (access) route.push('/dashboard');
+  }, [access, route]);
+
+  return <Admin loginState={{ error, message }} setLoginData={setUserData} />;
 }
 
 export async function getStaticProps() {
