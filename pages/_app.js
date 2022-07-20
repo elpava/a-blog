@@ -17,30 +17,26 @@ function MyApp({ Component, pageProps }) {
     import('bootstrap/dist/js/bootstrap.js');
   }, []);
 
-  switch (route) {
-    case '/admin':
-      component = (
-        <LoginProvider>
+  if (route.startsWith('/admin')) {
+    component = (
+      <LoginProvider>
+        <Component {...pageProps} />
+      </LoginProvider>
+    );
+  } else if (route.startsWith('/dashboard')) {
+    component = (
+      <LoginProvider>
+        <DashboardLayout>
           <Component {...pageProps} />
-        </LoginProvider>
-      );
-      break;
-    case '/dashboard':
-      component = (
-        <LoginProvider>
-          <DashboardLayout>
-            <Component {...pageProps} />
-          </DashboardLayout>
-        </LoginProvider>
-      );
-      break;
-    default:
-      component = (
-        <SiteLayout>
-          <Component {...pageProps} />
-        </SiteLayout>
-      );
-      break;
+        </DashboardLayout>
+      </LoginProvider>
+    );
+  } else {
+    component = (
+      <SiteLayout>
+        <Component {...pageProps} />
+      </SiteLayout>
+    );
   }
 
   return (
