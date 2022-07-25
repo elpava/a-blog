@@ -1,0 +1,55 @@
+.table {
+  width: 100%;
+  $default-size: 5%;
+
+  thead {
+    th {
+      padding: 0.5rem 0;
+
+      &:nth-child(1) {
+        width: $default-size;
+      }
+
+      &:nth-child(2),
+      &:nth-child(3) {
+        width: calc($default-size * 4);
+      }
+
+      &:last-child {
+        width: $default-size;
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      @include m.primary-transition(background-color);
+
+      &:nth-child(even) {
+        background-color: v.$gray-5;
+      }
+
+      &:hover:not(:nth-child(even)) {
+        background-color: v.$blue-2;
+      }
+    }
+
+    td {
+      border-top: 1px solid v.$gray-6;
+      padding: 0.25rem;
+
+      &:nth-child(1) {
+        font-weight: 600;
+        text-align: center;
+      }
+
+      &:nth-child(2) {
+        text-transform: capitalize;
+      }
+
+      &:last-child {
+        text-align: center;
+      }
+    }
+  }
+}

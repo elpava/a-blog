@@ -1,0 +1,51 @@
+.btn {
+  border: none;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  padding: 0.2rem 0.6rem;
+  @include m.primary-transition(background-color);
+
+  &:focus,
+  &:active {
+    outline: none;
+  }
+}
+
+.delete {
+  color: v.$gray-1;
+  background-color: v.$error-color;
+
+  &:hover {
+    background-color: v.$error-color-dark;
+  }
+
+  &:active {
+    background-color: v.$error-color;
+  }
+}
+
+.edit {
+  color: v.$gray-1;
+  background-color: v.$info-color;
+
+  &:hover {
+    background-color: v.$info-color-dark;
+  }
+
+  &:active {
+    background-color: v.$info-color;
+  }
+}
+
+.show {
+  color: v.$gray-1;
+  background-color: v.$warning-color;
+
+  &:hover {
+    background-color: v.$warning-color-dark;
+  }
+
+  &:active {
+    background-color: v.$warning-color;
+  }
+}

@@ -39,6 +39,17 @@ time {
   color: #616161;
 }
 
+thead {
+  text-transform: uppercase;
+  text-align: center;
+  color: v.$gray-1;
+  background-color: v.$dark-1;
+
+  th:not(:last-child) {
+    border-right: 1px dashed v.$gray-9;
+  }
+}
+
 main {
   max-width: v.$desktop-max-width;
   width: v.$main-width;

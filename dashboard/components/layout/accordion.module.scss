@@ -1,0 +1,35 @@
+.accordion {
+  background-color: v.$gray-2;
+  border: 1px solid v.$gray-6;
+  border-radius: v.$primary-rounded;
+
+  .title,
+  .content {
+    padding: v.$cms-secondary-padding;
+  }
+
+  .title {
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    span {
+      font-family: inherit;
+    }
+  }
+
+  .content {
+    border-top: 1px solid v.$gray-6;
+    padding: v.$cms-secondary-padding;
+
+    .tools {
+      position: relative;
+      direction: rtl;
+      border-bottom: 1px solid v.$gray-6;
+      margin-top: 2rem;
+    }
+  }
+}
