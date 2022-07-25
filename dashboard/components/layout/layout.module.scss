@@ -40,13 +40,14 @@
         text-transform: capitalize;
         color: v.$dark-1;
         border-radius: v.$primary-rounded;
-        padding: 0.5rem 0;
         cursor: pointer;
         @include m.primary-transition(background-color);
 
         a {
+          display: block;
+          line-height: 3;
           color: inherit;
-          vertical-align: middle;
+          padding-right: 0.2rem;
         }
       }
     }

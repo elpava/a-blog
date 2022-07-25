@@ -18,12 +18,16 @@ function Layout({ children }) {
       onClick={() => setActive(i)}
       className={`${menuItems[active] === item ? styles.active : ''}`}
     >
-      <FaChevronRight
-        size=".8rem"
-        style={{ marginRight: '.3rem' }}
-        color={`${menuItems[active] === item ? 'white' : ''}`}
-      />
-      <Link href={`/dashboard/${item}`}>{item}</Link>
+      <Link href={`/dashboard/${item}`}>
+        <a>
+          <FaChevronRight
+            size=".8rem"
+            style={{ marginRight: '.3rem' }}
+            color={`${menuItems[active] === item ? 'white' : ''}`}
+          />
+          {item}
+        </a>
+      </Link>
     </li>
   ));
 
