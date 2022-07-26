@@ -9,7 +9,7 @@ function ByFeature({ featurePostsData }) {
     const { category, categorySlug, image, slug, title } = post;
 
     const postSlug = `/posts/${slug}`;
-    const postImage = `${process.env.NEXT_PUBLIC_POST_IMAGE_FOLDER}/${slug}/${image}`;
+    const postImage = `/posts/${slug}/${image}`;
 
     return (
       <div key={slug} className={styles.row}>

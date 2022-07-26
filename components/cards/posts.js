@@ -10,7 +10,7 @@ function Posts({ postData, grid }) {
     postData;
 
   const postSlug = `/posts/${slug}`;
-  const postImage = `${process.env.NEXT_PUBLIC_POST_IMAGE_FOLDER}/${slug}/${image}`;
+  const postImage = `/posts/${slug}/${image}`;
   const postDate = new Date(date).toLocaleString('en-us', {
     day: '2-digit',
     month: 'short',

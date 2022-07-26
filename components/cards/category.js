@@ -9,7 +9,7 @@ function CategoryPosts({ posts }) {
   const postsByCategory = posts.map(post => {
     const { category, date, excerpt, image, slug, title } = post;
     const postSlug = `/posts/${slug}`;
-    const postImage = `${process.env.NEXT_PUBLIC_POST_IMAGE_FOLDER}/${slug}/${image}`;
+    const postImage = `/posts/${slug}/${image}`;
     const formattedDate = new Date(date).toLocaleString('en-us', {
       day: '2-digit',
       month: 'short',

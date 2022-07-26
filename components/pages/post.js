@@ -29,7 +29,7 @@ function Post({ postsData, postData }) {
     year: 'numeric',
   });
 
-  const mainImagePath = `${process.env.NEXT_PUBLIC_POST_IMAGE_FOLDER}/${slug}/${image}`;
+  const mainImagePath = `/posts/${slug}/${image}`;
   const mainImageWidth = imagesDimensions[image].width;
   const mainImageHeight = imagesDimensions[image].height;
 
