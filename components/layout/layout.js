@@ -1,7 +1,13 @@
+import Auth from '../auth/auth';
 import Main from './main';
 
 function Layout({ children }) {
-  return <Main>{children}</Main>;
+  return (
+    <>
+      <Auth />
+      <Main>{children}</Main>;
+    </>
+  );
 }
 
 export default Layout;

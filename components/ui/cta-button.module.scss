@@ -1,0 +1,25 @@
+.cta {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: v.$gray-1;
+  border: none;
+  border-radius: v.$btn-rounded;
+  padding: 0.1rem 0.5rem;
+  @include m.primary-transition(background-color);
+
+  &.login {
+    background-color: v.$info-color;
+
+    &:hover {
+      background-color: v.$info-color-dark;
+    }
+  }
+
+  &.logout {
+    background-color: v.$error-color;
+
+    &:hover {
+      background-color: v.$error-color-dark;
+    }
+  }
+}

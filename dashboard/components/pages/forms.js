@@ -10,7 +10,10 @@ import styles from './forms.module.scss';
 const fetcher = url => fetch(url).then(res => res.json());
 
 function Forms() {
-  const { data, error } = useSWR('/api/data', fetcher);
+  const { data, error } = useSWR(
+    '/api/data?action=query&doc=contact-forms',
+    fetcher
+  );
   const [selectedIds, setSelectedIds] = useState(null);
   let component = <h3>Loading...</h3>;
 

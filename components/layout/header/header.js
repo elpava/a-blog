@@ -16,16 +16,11 @@ function Header() {
   const [toggle, setToggle] = useState(false);
   const [headerHeight, setHeaderHeight] = useState(0);
   const headerTagRef = useRef();
-  // const { ref: navTagRef } = useClickOutsideElement(setToggle);
   const { ref: dropdownRef } = useClickOutsideElement(setToggle);
 
   const toggleMenuHandler = () => setToggle(prevState => !prevState);
 
   const onLoadHeaderHandler = e => setHeaderHeight(e.target.offsetHeight);
-
-  // immediately hidden if we want going to click on menu items
-  // const onMouseEnterDropdown = () => window.innerWidth > 900 && setToggle(true);
-  // const onMouseLeaveDropdown = () => window.innerWidth > 900 && setToggle(false);
 
   return (
     <header className={styles.header} ref={headerTagRef}>

@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
+import { SessionProvider } from 'next-auth/react';
 
 import SiteLayout from '../components/layout/layout';
 import DashboardLayout from '../dashboard/components/layout/layout';
@@ -9,7 +10,7 @@ import LoginProvider from '../dashboard/store/loginStateContext';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../styles/global.scss';
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   const { route } = useRouter();
   let component;
 
@@ -33,9 +34,13 @@ function MyApp({ Component, pageProps }) {
     );
   } else {
     component = (
-      <SiteLayout>
-        <Component {...pageProps} />
-      </SiteLayout>
+      <>
+        <SessionProvider session={session}>
+          <SiteLayout>
+            <Component {...pageProps} />
+          </SiteLayout>
+        </SessionProvider>
+      </>
     );
   }
 

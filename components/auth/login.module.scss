@@ -1,0 +1,107 @@
+.block {
+  display: flex;
+  flex-direction: column;
+
+  .toggle {
+    font-size: 0.9rem;
+    background-color: v.$blue-2;
+    padding: 0.3rem 0.6rem;
+    cursor: pointer;
+
+    &:hover {
+      background-color: v.$blue-5;
+      padding-left: 1.5rem;
+    }
+  }
+
+  .toggle,
+  form,
+  .alert {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    width: 450px;
+    margin-right: auto;
+    margin-left: auto;
+
+    @include m.primary-transition(margin);
+    @include m.primary-transition(background-color);
+    @include m.primary-transition(padding-left);
+
+    @include m.responsive(bigger-than-tablet) {
+      margin-right: unset;
+    }
+  }
+
+  form {
+    background-color: v.$gray-4;
+    padding: 0.3rem 0.6rem;
+  }
+
+  input {
+    flex: 1 1 auto;
+    width: 22%;
+    border: 1px solid v.$gray-6;
+    border-radius: v.$primary-rounded;
+    padding: 0.15rem 0.35rem;
+
+    &::placeholder {
+      font-size: 0.75rem;
+      font-weight: 600;
+
+      color: v.$gray-8;
+    }
+
+    &:active,
+    &:focus {
+      outline: 3px solid v.$blue-3;
+    }
+  }
+
+  button {
+    font-size: 0.8rem;
+    font-weight: 700;
+    width: 16%;
+    line-height: 1.2;
+    color: v.$gray-2;
+    background-color: v.$info-color;
+    border-color: transparent;
+    border-radius: v.$primary-rounded;
+    @include m.primary-transition(background-color);
+
+    &:hover {
+      background-color: v.$info-color-dark;
+    }
+
+    &.signup {
+      color: v.$dark-2;
+      background-color: v.$success-color;
+
+      &:hover {
+        background-color: v.$success-color-dark;
+      }
+    }
+  }
+
+  .alert {
+    background-color: v.$warning-color;
+    border-bottom-right-radius: v.$btn-rounded;
+    border-bottom-left-radius: v.$btn-rounded;
+
+    ul {
+      list-style: none;
+      padding: 0 0 0 0.3rem;
+      margin: 0;
+
+      li {
+        font-size: 0.8rem;
+        font-weight: 600;
+        display: inline-block;
+        color: v.$dark-2;
+        border-bottom: 1px solid v.$dark-9;
+        padding-bottom: 0.3rem;
+        margin: 0.2rem;
+      }
+    }
+  }
+}

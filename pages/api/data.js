@@ -2,32 +2,35 @@ import {
   connectDatabase,
   getAllDocuments,
   deleteDocuments,
+  idsToObjectIds,
 } from '../../lib/mongodb-utils';
-
-import { idsToObjectIds } from '../../lib/utils';
 
 async function handler(req, res) {
   let result, client;
-  const selectedDb = { 'contact-forms': 'forms' };
+  const selectedDb = { 'contact-forms': 'forms', articles: 'posts' };
 
   //* **** GET *****//
   if (req.method === 'GET') {
-    try {
-      client = await connectDatabase();
-    } catch (err) {
-      res.status(500).json({ message: 'Connecting to the database failed.' });
-    }
+    const { action, doc } = req.query;
 
-    try {
-      result = await getAllDocuments(client, {});
-    } catch (err) {
-      res.status(404).json({ message: 'Queried data not found.' });
+    if (action === 'query') {
+      try {
+        client = await connectDatabase();
+      } catch (err) {
+        res.status(500).json({ message: 'Connecting to the database failed.' });
+      }
+
+      try {
+        result = await getAllDocuments(client, selectedDb[doc], {});
+      } catch (err) {
+        res.status(404).json({ message: 'Queried data not found.' });
+        client.close();
+      }
+
       client.close();
+
+      res.status(200).json({ message: 'Data query was successful.', result });
     }
-
-    client.close();
-
-    res.status(200).json({ message: 'Data query was successful.', result });
   }
 
   //* **** POST *****//

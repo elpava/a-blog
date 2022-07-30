@@ -1,5 +1,7 @@
+import Posts from '../../dashboard/components/pages/posts';
+
 function PostsPage() {
-  return <h3>posts</h3>;
+  return <Posts />;
 }
 
 export default PostsPage;

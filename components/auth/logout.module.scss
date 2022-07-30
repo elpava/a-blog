@@ -1,0 +1,34 @@
+.block {
+  display: flex;
+
+  .logout {
+    background-color: v.$gray-4;
+    padding: 0.3rem 0.6rem;
+    margin-right: auto;
+    margin-left: auto;
+    border-bottom-right-radius: v.$btn-rounded;
+    border-bottom-left-radius: v.$btn-rounded;
+
+    @include m.primary-transition(margin);
+
+    @include m.responsive(bigger-than-tablet) {
+      margin-right: unset;
+    }
+
+    p {
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: inline;
+      margin-right: 1.5rem;
+      margin-bottom: 0;
+
+      span {
+        font-size: 1rem;
+        font-weight: 600;
+        color: v.$active-color;
+        margin-left: 0.15rem;
+      }
+    }
+  }
+}
