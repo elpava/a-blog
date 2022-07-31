@@ -3,6 +3,8 @@ import { useRouter } from 'next/router';
 import Footer from './footer/footer';
 import Header from './header/header';
 
+import styles from './main.module.scss';
+
 function Main({ children }) {
   const { route } = useRouter();
   const isHomepage = route === '/';
@@ -12,7 +14,7 @@ function Main({ children }) {
   return (
     <>
       <Header />
-      <main className={classes}>{children}</main>
+      <main className={`${styles.main} ${classes}`}>{children}</main>
       <Footer />
     </>
   );

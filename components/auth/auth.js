@@ -10,7 +10,6 @@ function Auth() {
 
   return (
     <section className={styles.container}>
-      {status === 'loading' && <p>Loading...</p>}
       {status === 'unauthenticated' && <Login />}
       {status === 'authenticated' && <Logout />}
     </section>
