@@ -91,7 +91,7 @@ function Login() {
         } else {
           const result = await signIn('credentials', {
             redirect: false,
-            username,
+            username: username.toLowerCase(),
             password,
           });
 
@@ -138,7 +138,7 @@ function Login() {
               placeholder="Confirm Password"
               onChange={handleChange}
               onBlur={handleBlur}
-              value={values.confirmPassword}
+              value={values.confirmPassword || ''}
             />
           )}
           <button type="submit" className={classes}>

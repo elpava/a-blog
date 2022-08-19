@@ -6,8 +6,6 @@
     padding: 0.3rem 0.6rem;
     margin-right: auto;
     margin-left: auto;
-    border-bottom-right-radius: v.$btn-rounded;
-    border-bottom-left-radius: v.$btn-rounded;
 
     @include m.primary-transition(margin);
 
