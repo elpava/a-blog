@@ -5,7 +5,7 @@ function Layout({ children }) {
   return (
     <>
       <Auth />
-      <Main>{children}</Main>;
+      <Main>{children}</Main>
     </>
   );
 }

@@ -1,0 +1,58 @@
+.container {
+  max-width: 80%;
+  width: 800px;
+  margin: auto;
+
+  .form {
+  }
+
+  .meta {
+    margin-bottom: 4rem;
+
+    label {
+      display: flex;
+
+      &:not(:last-child) {
+        margin-bottom: 1rem;
+      }
+
+      input {
+        width: 70%;
+        margin-left: auto;
+      }
+    }
+  }
+
+  .data {
+    p {
+      font-family: inherit;
+    }
+
+    textarea {
+      width: 100%;
+      height: 75vh;
+      resize: none;
+      background-color: v.$gray-1;
+      border: 1px solid v.$gray-5;
+      border-radius: v.$primary-rounded;
+      padding: 0.75rem;
+
+      &:focus,
+      &:active {
+        outline: none;
+      }
+    }
+  }
+
+  .submit {
+    background-color: transparent;
+    border-color: v.$success-color;
+    border-radius: v.$btn-rounded;
+    padding: 0.4rem 0.9rem;
+    @include m.primary-transition(background-color);
+
+    &:hover {
+      background-color: v.$success-color;
+    }
+  }
+}

@@ -3,12 +3,14 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import { connectDatabase } from '../../../lib/mongodb-utils';
 import { verifyPassword } from '../../../lib/auth';
 
-export default NextAuth({
+const authOptions = {
   session: {
     strategy: 'jwt',
   },
   providers: [
     CredentialsProvider({
+      type: 'credentials',
+      credentials: {},
       async authorize(credentials) {
         const client = await connectDatabase();
 
@@ -35,8 +37,25 @@ export default NextAuth({
 
         client.close();
 
-        return { username: user.username };
+        return { name: user.username };
       },
     }),
   ],
-});
+  callbacks: {
+    async jwt({ token, account }) {
+      if (account) {
+        token.accessToken = account.access_token;
+      }
+
+      return token;
+    },
+    async session({ session }) {
+      session.id = 'ks282ks';
+      session.additionalData = '😀';
+
+      return session;
+    },
+  },
+};
+
+export default NextAuth(authOptions);

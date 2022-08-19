@@ -6,7 +6,7 @@ import styles from './logout.module.scss';
 
 function Logout() {
   function handleSignOut() {
-    signOut();
+    signOut({});
   }
 
   return (
