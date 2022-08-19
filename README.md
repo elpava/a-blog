@@ -4,6 +4,8 @@ This project was bootstrapped with Next.js.
 
 ## live Site
 
+[a-blog-simple.netlify.app](https://a-blog-simple.netlify.app/)
+
 ## Available Scripts
 
 In the project directory, you can run:
