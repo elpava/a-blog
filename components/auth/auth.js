@@ -11,16 +11,22 @@ function Auth() {
   const [showAuthForm, setShowAuthForm] = useState(false);
   const { status } = useSession();
 
-  function showAuthFormHandler() {
+  function toggleAuthFormHandler() {
     setShowAuthForm(!showAuthForm);
+  }
+
+  function closeAuthFormHandler() {
+    setShowAuthForm(false);
   }
 
   return (
     <section className={`${styles.container} ${showAuthForm && styles.show}`}>
-      <div className={styles.indicator} onClick={showAuthFormHandler}>
+      <div className={styles.indicator} onClick={toggleAuthFormHandler}>
         {<FaUserAlt color="green" />}
       </div>
-      {status === 'unauthenticated' && <Login />}
+      {status === 'unauthenticated' && (
+        <Login closeForm={closeAuthFormHandler} />
+      )}
       {status === 'authenticated' && <Logout />}
     </section>
   );

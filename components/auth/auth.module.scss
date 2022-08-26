@@ -4,8 +4,12 @@
   right: 0;
   z-index: 9999;
   display: flex;
-  transform: translatex(91%);
+  transform: translatex(90%);
   @include m.primary-transition(transform);
+
+  @include m.responsive(bigger-than-mobile) {
+    transform: translatex(92%);
+  }
 
   .indicator {
     display: flex;

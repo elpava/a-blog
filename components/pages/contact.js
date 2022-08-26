@@ -52,11 +52,9 @@ function Contact() {
     setRequestStatus('pending');
 
     try {
-      const data = await storeData(formData);
+      await storeData(formData);
 
       setRequestStatus('success');
-
-      console.log(data);
     } catch (err) {
       setRequestStatus('error');
       setErrorMessage(err.message);

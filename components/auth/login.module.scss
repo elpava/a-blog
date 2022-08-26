@@ -1,6 +1,11 @@
 .block {
   display: flex;
   flex-direction: column;
+  width: 25rem;
+
+  @include m.responsive(bigger-than-mobile) {
+    width: 35rem;
+  }
 
   .toggle {
     font-size: 0.9rem;
@@ -20,7 +25,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 5px;
-    width: 450px;
+    width: 100%;
     margin-right: auto;
     margin-left: auto;
 
@@ -85,8 +90,6 @@
 
   .alert {
     background-color: v.$warning-color;
-    border-bottom-right-radius: v.$btn-rounded;
-    border-bottom-left-radius: v.$btn-rounded;
 
     ul {
       list-style: none;

@@ -21,7 +21,18 @@ async function createUser(username, password) {
   return data;
 }
 
-function Alert({ errors, touched }) {
+async function signInRequest(username, password, applyFn) {
+  await signIn('credentials', {
+    redirect: false,
+    username: username.toLowerCase(),
+    password,
+  });
+  setTimeout(() => {
+    applyFn();
+  }, 2500);
+}
+
+const Alert = function ({ errors, touched }) {
   const errorKeys = Object.keys(errors);
 
   touched.samePassword = true;
@@ -39,9 +50,9 @@ function Alert({ errors, touched }) {
   );
 
   return <ul>{errorsList}</ul>;
-}
+};
 
-function Login() {
+function Login({ closeForm }) {
   const [isSignup, setIsSignup] = useState(false);
   const initialFields = { username: '', password: '' };
   const validateByYup = {
@@ -82,25 +93,24 @@ function Login() {
 
         if (isSignup) {
           try {
-            const result = await createUser(username, password);
+            const res = await createUser(username, password);
+            const { result } = res;
 
-            console.log(result);
+            if (!result) return;
+
+            signInRequest(result.username, result.password, closeForm);
+
+            console.log(res);
           } catch (err) {
             console.log(err);
           }
         } else {
-          const result = await signIn('credentials', {
-            redirect: false,
-            username: username.toLowerCase(),
-            password,
-          });
-
-          console.log(result);
+          signInRequest(username, password, closeForm);
         }
       },
     });
 
-  function handleToggler() {
+  function handleToggle() {
     setIsSignup(!isSignup);
   }
 
@@ -109,7 +119,7 @@ function Login() {
   return (
     <>
       <div className={styles.block}>
-        <div className={styles.toggle} onClick={handleToggler}>
+        <div className={styles.toggle} onClick={handleToggle}>
           {isSignup
             ? 'If You have an account please login'
             : "If you don't have any account please register"}
