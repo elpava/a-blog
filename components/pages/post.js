@@ -42,6 +42,7 @@ function Post({ postsData, postData }) {
           width={mainImageWidth}
           height={mainImageHeight}
           className={styles.hero}
+          priority
         />
       </div>
 

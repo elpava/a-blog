@@ -25,7 +25,7 @@ function Notification({ title, message }) {
 
   return (
     <div className={styles.block}>
-      <p className={[styles.message, classes].join(' ')}>{message}</p>
+      <span className={`${styles.message} ${classes}`}>{message}</span>
     </div>
   );
 }
