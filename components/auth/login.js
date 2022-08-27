@@ -22,14 +22,19 @@ async function createUser(username, password) {
 }
 
 async function signInRequest(username, password, applyFn) {
-  await signIn('credentials', {
+  const signInResult = await signIn('credentials', {
     redirect: false,
     username: username.toLowerCase(),
     password,
   });
-  setTimeout(() => {
-    applyFn();
-  }, 2500);
+
+  if (signInResult.status === 200) {
+    setTimeout(() => {
+      applyFn();
+    }, 2500);
+  }
+
+  return signInResult;
 }
 
 const Alert = function ({ errors, touched }) {
@@ -52,8 +57,10 @@ const Alert = function ({ errors, touched }) {
   return <ul>{errorsList}</ul>;
 };
 
-function Login({ closeForm }) {
+function Login({ closeForm, showNotification }) {
   const [isSignup, setIsSignup] = useState(false);
+  let signInStatus;
+
   const initialFields = { username: '', password: '' };
   const validateByYup = {
     username: Yup.string().required('is required'),
@@ -98,14 +105,40 @@ function Login({ closeForm }) {
 
             if (!result) return;
 
-            signInRequest(result.username, result.password, closeForm);
+            showNotification({
+              status: 'success',
+              message: 'The new account created.',
+            });
 
-            console.log(res);
+            signInStatus = await signInRequest(
+              result.username,
+              result.password,
+              closeForm
+            );
+
+            if (result.status === 401) {
+              showNotification({ status: 'error', message: result.error });
+            }
+
+            console.log(signInStatus);
           } catch (err) {
             console.log(err);
           }
         } else {
-          signInRequest(username, password, closeForm);
+          signInStatus = await signInRequest(username, password, closeForm);
+
+          if (signInStatus.status === 401) {
+            showNotification({
+              status: 'warning',
+              message: 'The user not found, first register please',
+            });
+          } else if (signInStatus.status === 200) {
+            showNotification({
+              status: 'success',
+              message: 'Welcome ' + username,
+            });
+          }
+          console.log(signInStatus);
         }
       },
     });

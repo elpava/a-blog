@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
 import PrimaryButton from '../ui/primary-button';
 import Notification from '../ui/notification';
@@ -26,15 +26,6 @@ function Contact() {
   const emailInputRef = useRef('');
   const messageInputRef = useRef('');
   let notificationMessage;
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (requestStatus === 'success' || requestStatus === 'error')
-        setRequestStatus('');
-    }, 3000);
-
-    return () => clearTimeout(timer);
-  }, [requestStatus]);
 
   const onSubmitHandler = async e => {
     e.preventDefault();
