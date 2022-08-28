@@ -7,7 +7,7 @@ async function handler(req, res) {
     const email = req.body.email;
     const message = req.body.message;
 
-    let client, result;
+    let client;
 
     if (
       !name ||
@@ -34,7 +34,7 @@ async function handler(req, res) {
     }
 
     try {
-      result = await insertDocument(client, newFormData);
+      await insertDocument(client, newFormData);
       res
         .status(201)
         .json({ message: 'Successfully stored message.', data: newFormData });
@@ -47,8 +47,6 @@ async function handler(req, res) {
     client.close();
 
     storeContactsData(newFormData);
-
-    return result;
   }
 }
 
