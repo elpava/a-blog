@@ -34,7 +34,7 @@ async function handler(req, res) {
     }
 
     try {
-      await insertDocument(client, newFormData);
+      await insertDocument(client, 'forms', newFormData);
       res
         .status(201)
         .json({ message: 'Successfully stored message.', data: newFormData });
