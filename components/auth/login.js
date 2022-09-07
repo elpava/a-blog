@@ -101,9 +101,9 @@ function Login({ closeForm, showNotification }) {
         if (isSignup) {
           try {
             const res = await createUser(username, password);
-            const { result } = res;
+            const { data } = res;
 
-            if (!result) return;
+            if (!data) return;
 
             showNotification({
               status: 'success',
@@ -111,19 +111,15 @@ function Login({ closeForm, showNotification }) {
             });
 
             signInStatus = await signInRequest(
-              result.username,
-              result.password,
+              data.username,
+              data.password,
               closeForm
             );
 
-            if (result.status === 401) {
-              showNotification({ status: 'error', message: result.error });
+            if (data.status === 401) {
+              showNotification({ status: 'error', message: data.error });
             }
-
-            console.log(signInStatus);
-          } catch (err) {
-            console.log(err);
-          }
+          } catch (err) {}
         } else {
           signInStatus = await signInRequest(username, password, closeForm);
 
@@ -138,7 +134,6 @@ function Login({ closeForm, showNotification }) {
               message: 'Welcome ' + username,
             });
           }
-          console.log(signInStatus);
         }
       },
     });

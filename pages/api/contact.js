@@ -9,6 +9,7 @@ async function handler(req, res) {
 
     let client;
 
+    // TODO use Yup
     if (
       !name ||
       name.trim() === '' ||
@@ -39,8 +40,8 @@ async function handler(req, res) {
         .status(201)
         .json({ message: 'Successfully stored message.', data: newFormData });
     } catch (err) {
-      client.close();
       res.status(500).json({ message: 'Storing message failed.' });
+      client.close();
       return;
     }
 

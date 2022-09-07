@@ -17,7 +17,13 @@ function FeaturePostCard({ postData }) {
 
   return (
     <div className={styles.postcard}>
-      <Image src={postImage} alt={title} layout="fill" objectFit="cover" />
+      <Image
+        src={postImage}
+        alt={title}
+        layout="fill"
+        objectFit="cover"
+        priority
+      />
       <Link href={postSlug}>
         <a>
           <div className={styles.info}>

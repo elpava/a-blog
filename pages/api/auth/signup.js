@@ -3,7 +3,7 @@ import { connectDatabase } from '../../../lib/mongodb-utils';
 
 async function handler(req, res) {
   if (req.method !== 'POST') return;
-  let client, result;
+  let client, data;
   const { username, password } = req.body;
   const usernameTransformed = username.toLowerCase();
 
@@ -20,7 +20,7 @@ async function handler(req, res) {
     .findOne({ username: usernameTransformed });
 
   if (existingUser) {
-    res.status(422).json({ message: 'User exist already!', result: null });
+    res.status(422).json({ message: 'User exist already!', data: null });
     client.close();
     return;
   }
@@ -28,17 +28,17 @@ async function handler(req, res) {
   const hashedPassword = await hashPassword(password);
 
   try {
-    result = await db
+    data = await db
       .collection('users')
       .insertOne({ username: usernameTransformed, password: hashedPassword });
-    result = { ...result, username: usernameTransformed, password };
+    data = { ...data, username: usernameTransformed, password };
   } catch (err) {
     res.status(500).json(err.message || 'Creating user failed.');
   }
 
   client.close();
 
-  res.status(201).json({ message: 'Created user', result });
+  res.status(201).json({ message: 'Created user', data });
 }
 
 export default handler;
