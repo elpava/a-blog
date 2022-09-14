@@ -3,21 +3,30 @@ import FeaturePosts from '../containers/feature-posts';
 import Subscribe from '../containers/subscribe';
 import PostsWithSidebar from '../containers/posts-with-sidebar';
 
-function Home({
-  featuredPostsData,
-  allPostsData,
-  allCategroriesData,
-  allTagsData,
-}) {
+function Home({ allPosts }) {
+  const featuredPostsData = [];
+  const allCategroriesName = [];
+  const allTagsData = [];
+
+  allPosts.forEach(post => {
+    if (post.isFeatured) featuredPostsData.push(post);
+
+    if (!allCategroriesName.includes(post.category)) {
+      allCategroriesName.push(post.category);
+    }
+
+    allTagsData.push(post.tags);
+  });
+
   return (
     <>
       <FeaturePosts posts={featuredPostsData} />
-      <GridPosts posts={allPostsData} />
+      <GridPosts posts={allPosts} />
       <Subscribe />
       <PostsWithSidebar
-        posts={allPostsData}
+        posts={allPosts}
         featurePosts={featuredPostsData}
-        categories={allCategroriesData}
+        categories={allCategroriesName}
         tags={allTagsData}
       />
     </>

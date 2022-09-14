@@ -1,4 +1,4 @@
-import PostsBlock from '../cards/posts-block';
+import PostsColumn from '../cards/posts-block';
 import Sidebar from './sidebar';
 import StickyMenu from '../layout/sticky-menu';
 import ByCategory from '../sidebar/category';
@@ -16,7 +16,7 @@ function PostsWithSidebar({
 }) {
   return (
     <section className={styles.container}>
-      <PostsBlock posts={posts} />
+      <PostsColumn posts={posts} />
 
       <Sidebar>
         <StickyMenu>

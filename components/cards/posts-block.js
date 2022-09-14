@@ -1,24 +1,34 @@
-import Link from 'next/link';
+import { useState } from 'react';
+
 import Posts from './posts';
 import PrimaryButton from '../ui/primary-button';
 
 import styles from './posts-block.module.scss';
 
-function PostsBlock({ posts }) {
-  const gridPosts = posts
-    .slice(-3)
-    .map(post => <Posts key={post.slug} postData={post} grid />);
+function PostsColumn({ posts }) {
+  const [endSlice, setEndSlice] = useState(3);
+  const copiedPosts = JSON.parse(JSON.stringify(posts));
+  const slicedPosts = copiedPosts.splice(0, endSlice);
+  const generatedPosts = slicedPosts.map(post => (
+    <Posts key={post._id} postData={post} grid />
+  ));
+  const showButton = endSlice < posts.length;
+
+  function showAdditionalPostsHandler() {
+    setEndSlice(prevState => prevState + 3);
+  }
 
   return (
     <section className={styles.container}>
-      <div className="block">{gridPosts}</div>
-      <Link href="#">
-        <a>
-          <PrimaryButton text="see all posts" />
-        </a>
-      </Link>
+      <div className="block">{generatedPosts}</div>
+      {showButton && (
+        <PrimaryButton
+          text="see all posts"
+          onClick={showAdditionalPostsHandler}
+        />
+      )}
     </section>
   );
 }
 
-export default PostsBlock;
+export default PostsColumn;

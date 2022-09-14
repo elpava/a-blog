@@ -4,7 +4,7 @@ import styles from './feature-posts.module.scss';
 
 function FeaturePosts({ posts }) {
   const featuredPosts = posts.map(post => (
-    <FeaturePostCard postData={post} key={post.slug} />
+    <FeaturePostCard postData={post} key={post._id} />
   ));
 
   return <section className={styles.container}>{featuredPosts}</section>;

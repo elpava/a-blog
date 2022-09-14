@@ -1,15 +1,12 @@
 import Head from 'next/head';
 import Home from '../components/pages/home';
 
-import {
-  getFeaturedPosts,
-  getAllPosts,
-  getAllPostsCategoryName,
-  getAllTags,
-} from '../lib/posts-utils';
+import { connectDatabase, getAllDocuments } from '../lib/mongodb-utils';
 
 function HomePage(props) {
-  const { featuredPosts, allPosts, allPostsCategoryName, allTags } = props;
+  const { data } = props;
+
+  const allPosts = JSON.parse(data);
 
   return (
     <>
@@ -17,24 +14,20 @@ function HomePage(props) {
         <title>Blog</title>
       </Head>
 
-      <Home
-        featuredPostsData={featuredPosts}
-        allPostsData={allPosts}
-        allCategroriesData={allPostsCategoryName}
-        allTagsData={allTags}
-      />
+      <Home allPosts={allPosts} />
     </>
   );
 }
 
 export async function getStaticProps() {
-  const featuredPosts = getFeaturedPosts();
-  const allPosts = getAllPosts();
-  const allPostsCategoryName = getAllPostsCategoryName();
-  const allTags = getAllTags();
+  const client = await connectDatabase();
+  let allPosts = await getAllDocuments(client, 'posts', {});
+  allPosts = JSON.stringify(allPosts);
 
   return {
-    props: { featuredPosts, allPosts, allPostsCategoryName, allTags },
+    props: {
+      data: allPosts,
+    },
   };
 }
 
