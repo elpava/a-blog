@@ -4,14 +4,39 @@ import GridPosts from '../containers/grid-posts';
 
 import styles from './categories.module.scss';
 
-function Categories({ categorizedPostsData }) {
-  const postsCategory = categorizedPostsData.map(item => {
-    const { category, slug, posts } = item;
-    const categorySlug = `/category/${slug}`;
+function Categories({ allPosts }) {
+  const uniqueCategories = allPosts.reduce((total, post) => {
+    const { category } = post;
+
+    if (!total.includes(category)) {
+      total.push(category);
+    }
+
+    return total;
+  }, []);
+
+  const categorizedPosts = uniqueCategories.map(category => {
+    let categorySlug;
+
+    const filteredPosts = allPosts.filter(post => {
+      if (post.category === category) {
+        categorySlug = post.categorySlug;
+        return post;
+      } else {
+        return null;
+      }
+    });
+
+    return { category, posts: filteredPosts, categorySlug };
+  });
+
+  const postsCategory = categorizedPosts.map(item => {
+    const { category, categorySlug, posts } = item;
+    const slug = `/category/${categorySlug}`;
 
     return (
       <section className={styles.container} key={category}>
-        <Link href={categorySlug}>
+        <Link href={slug}>
           <a className={styles.link}>
             <h1>{category}</h1>
           </a>

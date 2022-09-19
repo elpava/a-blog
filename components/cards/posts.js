@@ -33,7 +33,13 @@ function Posts({ postData, grid }) {
   return (
     <div className={customStyle.card}>
       <div className={customStyle.image}>
-        <Image src={postImage} alt={title} layout="fill" objectFit="cover" />
+        <Image
+          src={postImage}
+          alt={title}
+          layout="fill"
+          objectFit="cover"
+          priority
+        />
       </div>
       <div className={styles.header}>
         <CategoryLable data={{ text: category, slug: categorySlug }} />
