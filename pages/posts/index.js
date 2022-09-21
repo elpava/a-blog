@@ -1,11 +1,12 @@
 import Head from 'next/head';
 
-import { getAllPosts } from '../../lib/posts-utils';
+import { connectDatabase, getChunkOfAllPosts } from '../../lib/mongodb-utils';
 
 import Posts from '../../components/pages/posts';
 
 function PostsPage(props) {
-  const { posts } = props;
+  const { data } = props;
+  const allPosts = JSON.parse(data);
 
   return (
     <>
@@ -13,17 +14,24 @@ function PostsPage(props) {
         <title>Blog&apos;s Posts</title>
       </Head>
 
-      <Posts postsData={posts} />
+      <Posts postsData={allPosts} />
     </>
   );
 }
 
 export async function getStaticProps() {
-  const allPosts = getAllPosts();
+  const client = await connectDatabase();
+  let allPosts = await getChunkOfAllPosts(
+    client,
+    {},
+    { category: 1, categorySlug: 1, date: 1, image: 1, slug: 1, title: 1 }
+  );
+
+  allPosts = JSON.stringify(allPosts);
 
   return {
     props: {
-      posts: allPosts,
+      data: allPosts,
     },
   };
 }
