@@ -1,19 +1,35 @@
 import Head from 'next/head';
 
 import Category from '../../../components/pages/category';
-
 import {
-  getPostsByCategory,
-  getAllPostsCategorySlug,
-  getAllPostsCategoryName,
-  getAllTags,
-} from '../../../lib/posts-utils';
-import { capitalizeWords } from '../../../lib/utils';
+  connectDatabase,
+  getChunkOfAllPosts,
+  getValuseFromPostsFields,
+} from '../../../lib/mongodb-utils';
+
+import { capitalizeWords, unslugString } from '../../../lib/utils';
 
 function CategoryPage(props) {
-  const { allTags, allPostsCategoryName, postsByCategory, slug } = props;
+  const { data, slug } = props;
+  const allPosts = JSON.parse(data);
 
-  const title = capitalizeWords(slug);
+  const categoryString = unslugString(slug);
+  const title = capitalizeWords(categoryString);
+
+  const filteredPostsByCategory = [];
+  const allCategory = [];
+  const allTags = [];
+
+  allPosts.forEach(post => {
+    const { category, tags } = post;
+
+    if (category === categoryString) {
+      filteredPostsByCategory.push(post);
+    }
+
+    allCategory.push(category);
+    allTags.push(tags);
+  });
 
   return (
     <>
@@ -22,9 +38,9 @@ function CategoryPage(props) {
       </Head>
 
       <Category
-        postsData={postsByCategory}
+        postsData={filteredPostsByCategory}
         category={title}
-        categoriesData={allPostsCategoryName}
+        categoriesData={allCategory}
         tagsData={allTags}
       />
     </>
@@ -35,20 +51,32 @@ export async function getStaticProps(context) {
   const { params } = context;
   const { slug } = params;
 
-  const postsByCategory = getPostsByCategory(slug);
-  const allPostsCategoryName = getAllPostsCategoryName();
-  const allTags = getAllTags();
+  const client = await connectDatabase();
+  let allPosts = await getChunkOfAllPosts(
+    client,
+    {},
+    { isFeatured: 0, mostViewed: 0, imagesDimensions: 0 }
+  );
+
+  allPosts = JSON.stringify(allPosts);
 
   return {
-    props: { allTags, allPostsCategoryName, postsByCategory, slug },
+    props: {
+      data: allPosts,
+      slug,
+    },
   };
 }
 
 export async function getStaticPaths() {
-  const allPostsCategorySlug = getAllPostsCategorySlug();
+  const client = await connectDatabase();
+  const allUniqueCategorySlug = await getValuseFromPostsFields(
+    client,
+    'categorySlug'
+  );
 
-  const slugs = allPostsCategorySlug.map(category => ({
-    params: { slug: category },
+  const slugs = allUniqueCategorySlug.map(categorySlug => ({
+    params: { slug: categorySlug },
   }));
 
   return {
