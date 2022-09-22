@@ -5,30 +5,23 @@ import GridPosts from '../containers/grid-posts';
 import styles from './categories.module.scss';
 
 function Categories({ allPosts }) {
-  const uniqueCategories = allPosts.reduce((total, post) => {
-    const { category } = post;
+  let categorizedPosts = {};
 
-    if (!total.includes(category)) {
-      total.push(category);
+  allPosts.forEach(post => {
+    const { category, categorySlug } = post;
+
+    if (categorizedPosts[category]) {
+      categorizedPosts[category].posts.push(post);
+    } else {
+      categorizedPosts[category] = {};
+      categorizedPosts[category].category = category;
+      categorizedPosts[category].categorySlug = categorySlug;
+      categorizedPosts[category].posts = [];
+      categorizedPosts[category].posts.push(post);
     }
-
-    return total;
-  }, []);
-
-  const categorizedPosts = uniqueCategories.map(category => {
-    let categorySlug;
-
-    const filteredPosts = allPosts.filter(post => {
-      if (post.category === category) {
-        categorySlug = post.categorySlug;
-        return post;
-      } else {
-        return null;
-      }
-    });
-
-    return { category, posts: filteredPosts, categorySlug };
   });
+
+  categorizedPosts = Object.values(categorizedPosts);
 
   const postsCategory = categorizedPosts.map(item => {
     const { category, categorySlug, posts } = item;
