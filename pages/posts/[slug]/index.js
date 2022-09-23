@@ -1,15 +1,18 @@
 import Head from 'next/head';
 
 import {
-  getPostData,
-  getAllPosts,
-  getPostsFiles,
-} from '../../../lib/posts-utils';
+  connectDatabase,
+  getChunkOfAllPosts,
+  getPost,
+  getValuseFromPostsFields,
+} from '../../../lib/mongodb-utils';
 
 import Post from '../../../components/pages/post';
 
 function SinglePost(props) {
-  const { post, posts } = props;
+  const { data, morePosts } = props;
+  const post = JSON.parse(data);
+  const prevAndNextThePost = JSON.parse(morePosts);
   const { title } = post;
 
   return (
@@ -18,7 +21,7 @@ function SinglePost(props) {
         <title>{title}</title>
       </Head>
 
-      <Post postData={post} postsData={posts} />
+      <Post postData={post} postsData={prevAndNextThePost} />
     </>
   );
 }
@@ -27,26 +30,38 @@ export async function getStaticProps(context) {
   const { params } = context;
   const { slug } = params;
 
-  const postData = getPostData(slug);
-  const allPostsData = getAllPosts().slice(2, -1);
+  const client = await connectDatabase();
+
+  let post = await getPost(client, { slug });
+  const { postId } = post;
+
+  let prevAndNextThePost = await getChunkOfAllPosts(
+    client,
+    { postId: { $in: [postId - 1, postId + 1] } },
+    { category: 1, categorySlug: 1, date: 1, image: 1, title: 1, slug: 1 }
+  );
+
+  prevAndNextThePost = JSON.stringify(prevAndNextThePost);
+  post = JSON.stringify(post);
 
   return {
     props: {
-      post: postData,
-      posts: allPostsData,
+      data: post,
+      morePosts: prevAndNextThePost,
     },
   };
 }
 
 export async function getStaticPaths() {
-  const postsFilenames = getPostsFiles();
+  const client = await connectDatabase();
+  const allUniquePostsSlug = await getValuseFromPostsFields(client, 'slug');
 
-  const slugs = postsFilenames.map(postFilename =>
-    postFilename.replace(/\.md$/, '')
-  );
+  const slugs = allUniquePostsSlug.map(slug => ({
+    params: { slug },
+  }));
 
   return {
-    paths: slugs.map(slug => ({ params: { slug } })),
+    paths: slugs,
     fallback: false,
   };
 }
