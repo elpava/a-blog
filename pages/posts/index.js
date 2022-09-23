@@ -21,6 +21,7 @@ function PostsPage(props) {
 
 export async function getStaticProps() {
   const client = await connectDatabase();
+
   let allPosts = await getChunkOfAllPosts(
     client,
     {},
@@ -28,6 +29,8 @@ export async function getStaticProps() {
   );
 
   allPosts = JSON.stringify(allPosts);
+
+  client.close();
 
   return {
     props: {

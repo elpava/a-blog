@@ -21,8 +21,11 @@ function HomePage(props) {
 
 export async function getStaticProps() {
   const client = await connectDatabase();
+
   let allPosts = await getAllDocuments(client, 'posts', {});
   allPosts = JSON.stringify(allPosts);
+
+  client.close();
 
   return {
     props: {

@@ -21,12 +21,15 @@ function CategoriesPage(props) {
 
 export async function getStaticProps() {
   const client = await connectDatabase();
+
   let data = await getChunkOfAllPosts(
     client,
     {},
     { category: 1, categorySlug: 1, date: 1, image: 1, slug: 1, title: 1 }
   );
   data = JSON.stringify(data);
+
+  client.close();
 
   return { props: { data } };
 }

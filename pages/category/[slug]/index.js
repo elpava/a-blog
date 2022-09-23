@@ -52,13 +52,15 @@ export async function getStaticProps(context) {
   const { slug } = params;
 
   const client = await connectDatabase();
+
   let allPosts = await getChunkOfAllPosts(
     client,
     {},
     { isFeatured: 0, mostViewed: 0, imagesDimensions: 0 }
   );
-
   allPosts = JSON.stringify(allPosts);
+
+  client.close();
 
   return {
     props: {
@@ -70,10 +72,13 @@ export async function getStaticProps(context) {
 
 export async function getStaticPaths() {
   const client = await connectDatabase();
+
   const allUniqueCategorySlug = await getValuseFromPostsFields(
     client,
     'categorySlug'
   );
+
+  client.close();
 
   const slugs = allUniqueCategorySlug.map(categorySlug => ({
     params: { slug: categorySlug },

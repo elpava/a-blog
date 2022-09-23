@@ -41,8 +41,10 @@ export async function getStaticProps(context) {
     { category: 1, categorySlug: 1, date: 1, image: 1, title: 1, slug: 1 }
   );
 
-  prevAndNextThePost = JSON.stringify(prevAndNextThePost);
   post = JSON.stringify(post);
+  prevAndNextThePost = JSON.stringify(prevAndNextThePost);
+
+  client.close();
 
   return {
     props: {
@@ -54,7 +56,10 @@ export async function getStaticProps(context) {
 
 export async function getStaticPaths() {
   const client = await connectDatabase();
+
   const allUniquePostsSlug = await getValuseFromPostsFields(client, 'slug');
+
+  client.close();
 
   const slugs = allUniquePostsSlug.map(slug => ({
     params: { slug },
