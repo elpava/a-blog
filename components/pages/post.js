@@ -14,6 +14,7 @@ import styles from './post.module.scss';
 function Post({ postsData, postData }) {
   const {
     category,
+    categorySlug,
     content,
     date,
     image,
@@ -49,7 +50,7 @@ function Post({ postsData, postData }) {
       <section className={styles.container}>
         <section className={styles.content}>
           <div className={styles.header}>
-            <CategoryLable data={{ text: category, slug: category }} />
+            <CategoryLable data={{ text: category, slug: categorySlug }} />
             <time>{formattedDate}</time>
           </div>
 
