@@ -1,18 +1,17 @@
-/* eslint-disable no-inner-declarations */
+/* eslint-disable no-unused-vars */
 import { useState } from 'react';
 import useSWR from 'swr';
-import Accordion from '../layout/accordion';
+import { keyFetcher } from '../../../lib/utils';
 
+import Accordion from '../layout/accordion';
 import CmsTable from '../ui/table';
 
 import styles from './forms.module.scss';
 
-const fetcher = url => fetch(url).then(res => res.json());
-
 function Forms() {
-  const { data, error } = useSWR(
+  const { data } = useSWR(
     '/api/data?action=query&doc=contact-forms',
-    fetcher
+    keyFetcher
   );
   const [selectedIds, setSelectedIds] = useState(null);
   let component = <h3>Loading...</h3>;
