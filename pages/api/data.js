@@ -1,6 +1,7 @@
 import {
   connectDatabase,
   getAllDocuments,
+  getChunkOfAllPosts,
   deleteDocuments,
   idsToObjectIds,
 } from '../../lib/mongodb-utils';
@@ -11,20 +12,35 @@ async function handler(req, res) {
 
   //* **** GET *****//
   if (req.method === 'GET') {
-    const { action, doc } = req.query;
+    const { action, doc, fields } = req.query;
 
     if (action === 'query') {
+      const requiredFields = {};
+
       try {
         client = await connectDatabase();
       } catch (err) {
         res.status(500).json({ message: 'Connecting to the database failed.' });
       }
 
-      try {
-        result = await getAllDocuments(client, selectedDb[doc], {});
-      } catch (err) {
-        res.status(404).json({ message: 'Queried data not found.' });
-        client.close();
+      if (fields) {
+        fields.forEach(field => {
+          requiredFields[field] = 1;
+        });
+
+        try {
+          result = await getChunkOfAllPosts(client, {}, requiredFields);
+        } catch (err) {
+          res.status(404).json({ message: 'Queried data not found.' });
+          client.close();
+        }
+      } else {
+        try {
+          result = await getAllDocuments(client, selectedDb[doc], {});
+        } catch (err) {
+          res.status(404).json({ message: 'Queried data not found.' });
+          client.close();
+        }
       }
 
       client.close();

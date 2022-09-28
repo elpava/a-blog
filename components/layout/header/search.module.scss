@@ -1,5 +1,6 @@
 .field {
   justify-self: end;
+  position: relative;
 
   @include m.responsive(mobile) {
     display: none;
@@ -61,5 +62,43 @@
     line-height: 100%;
     border: none;
     background: transparent;
+  }
+
+  ul {
+    list-style: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 2px solid #000;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: #fff;
+    padding: 0;
+    margin-top: 0.7rem;
+
+    li {
+      padding: 0.55rem 0.35rem;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      background-color: transparent;
+      overflow: hidden;
+      @include m.primary-transition(background-color);
+
+      &:not(:last-child) {
+        border-bottom: 1px solid #e4e4e4;
+      }
+
+      &:hover {
+        background-color: #d1d1d1;
+      }
+
+      a {
+        font-weight: 600;
+        color: black;
+      }
+    }
   }
 }
