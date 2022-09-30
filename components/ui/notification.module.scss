@@ -1,4 +1,5 @@
 .block {
+  $second-color: rgba(201, 201, 201, 0.4);
   position: relative;
   z-index: 9999;
 
@@ -10,31 +11,31 @@
     font-family: inherit;
     font-size: 1.2rem;
     font-weight: 500;
-    background-color: #9ea7ad;
-    color: #fff;
+    background: linear-gradient(to right, #9ea7ad, $second-color 30%);
+    color: #000;
     border-radius: 8px;
-    padding: 0.6rem 1.4rem;
+    padding: 1.1rem 1.4rem;
     box-shadow: 0 4px 10px 0px #23232340;
   }
 
   .pending {
-    background-color: #2dccff;
+    background: linear-gradient(to right, #2dccff, $second-color 30%);
   }
 
   .success {
-    background-color: #56f000;
+    background: linear-gradient(to right, #56f000, $second-color 30%);
   }
 
   .caution {
     color: #252525;
-    background-color: #fce83a;
+    background: linear-gradient(to right, #fce83a, $second-color 30%);
   }
 
   .warning {
-    background-color: #ffb302;
+    background: linear-gradient(to right, #ffb302, $second-color 30%);
   }
 
   .error {
-    background-color: #ff3838;
+    background: linear-gradient(to right, #ff3838, $second-color 30%);
   }
 }
