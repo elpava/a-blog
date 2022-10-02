@@ -11,7 +11,7 @@ import styles from './search.module.scss';
 
 function Search({ hideOnDesktop }) {
   const { data } = useSWR(
-    '/api/data?action=query&doc=articles&fields=title&fields=slug',
+    '/api/data?action=query&doc=articles&fields=title,slug',
     keyFetcher
   );
   const [search, setSearch] = useState('');

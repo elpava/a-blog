@@ -15,8 +15,6 @@ async function handler(req, res) {
     const { action, doc, fields } = req.query;
 
     if (action === 'query') {
-      const requiredFields = {};
-
       try {
         client = await connectDatabase();
       } catch (err) {
@@ -24,9 +22,10 @@ async function handler(req, res) {
       }
 
       if (fields) {
-        fields.forEach(field => {
-          requiredFields[field] = 1;
-        });
+        const requiredFields = {};
+
+        const fieldsQueryArray = fields.split(',');
+        fieldsQueryArray.forEach(field => (requiredFields[field] = 1));
 
         try {
           result = await getChunkOfAllPosts(client, {}, requiredFields);
